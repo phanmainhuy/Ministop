@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity"
-    android:padding="20dp"
+    android:paddingRight="20dp"
+    android:paddingLeft="20dp"
     android:scrollbars="vertical"
     android:background="@color/yellow">
 
@@ -17,7 +18,6 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnfb" />
 
@@ -108,9 +108,9 @@
         android:onClick="Handle"
         android:text="Đăng nhập"
         android:textColor="@color/white"
+        android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/chkSave" />
 
@@ -121,6 +121,7 @@
         android:backgroundTint="@color/blue"
         android:onClick="Handle"
         android:text="Đăng ký"
+        android:textSize="15dp"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
