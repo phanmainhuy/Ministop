@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(txtusername.getText().toString().equals("nhuy") && txtpassword.getText().toString().equals("123"))
+                if(txtusername.getText().toString().equals("0948462040") && txtpassword.getText().toString().equals("123"))
                 {
                     Toast.makeText(getApplicationContext(), "Login thanh cong", Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = luutru.edit();
@@ -76,15 +76,15 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void Handle(View view)
+    public void HandleLogin(View view)
     {
         int id = view.getId();
         switch (id)
         {
-//            case R.id.btnRegister:
-//                Intent intent = new Intent(Hinh2Activity.this, Hinh3Activity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.btnRegister:
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                break;
             case R.id.btnfb:
                 FbClick();
                 break;

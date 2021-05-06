@@ -8,25 +8,136 @@
     android:background="@color/yellow"
     android:padding="20dp">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="ĐĂNG KÝ TÀI KHOẢN"
+        android:textColor="@color/blue"
+        android:textSize="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="MINISTOP"
+        android:textColor="@color/blue"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/txtusername"
+        android:id="@+id/txt_phone"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/decorate_text"
-        android:drawableLeft="@drawable/username"
-        android:hint=" Tên đăng nhập"
-        android:paddingLeft="20dp"
+        android:background="@drawable/decorate_text_register"
+        android:drawableLeft="@drawable/ic_phone"
+        android:hint=" Số điện thoại"
         android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        android:inputType="phone"
+        android:textColorHint="@color/hint_txt"
+        app:layout_constraintTop_toBottomOf="@+id/textView10"
+        tools:layout_editor_absoluteX="16dp" />
 
+    <EditText
+        android:id="@+id/txt_password"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:hint="  Mật khẩu"
+        android:drawableLeft="@drawable/password"
+        android:textColorHint="@color/hint_txt"
+        android:textColor="@color/black"
+        android:layout_height="50dp"
+        android:inputType="textPassword"
+        android:background="@drawable/decorate_text_register"
+        app:layout_constraintTop_toBottomOf="@+id/txt_phone"
+        tools:layout_editor_absoluteX="20dp" />
+    <EditText
+        android:id="@+id/txt_repass"
+        android:layout_width="match_parent"
+        android:textColorHint="@color/hint_txt"
+        android:drawableLeft="@drawable/password"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:inputType="textPassword"
+        android:layout_height="50dp"
+        android:hint="  Nhập lại mật khẩu"
+        android:background="@drawable/decorate_text_register"
+        app:layout_constraintTop_toBottomOf="@+id/txt_password"
+        tools:layout_editor_absoluteX="20dp" />
 
+    <EditText
+        android:id="@+id/txt_email"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="50dp"
+        android:background="@drawable/decorate_text_register"
+        android:drawableLeft="@drawable/ic_email"
+        android:hint="  Email"
+        android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint_txt"
+        app:layout_constraintTop_toBottomOf="@+id/txt_repass"
+        tools:layout_editor_absoluteX="20dp" />
 
+    <EditText
+        android:id="@+id/txt_nameuser"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/decorate_text_register"
+        android:drawableLeft="@drawable/username"
+        android:hint="  Họ và tên"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint_txt"
+        app:layout_constraintTop_toBottomOf="@+id/txt_email"
+        tools:layout_editor_absoluteX="20dp" />
 
+    <EditText
+        android:id="@+id/txt_adress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_location"
+        android:background="@drawable/decorate_text_register"
+        android:hint="  Địa chỉ"
+        android:textColor="@color/black"
+        android:textColorHint="@color/hint_txt"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nameuser"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <Button
+        android:id="@+id/btnSaveRegister"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/blue"
+        android:text="Đăng ký"
+        android:textColor="@color/white"
+        android:onClick="HandleRegister"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/txt_adress"
+        tools:layout_editor_absoluteX="20dp" />
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:onClick="HandleRegister"
+        android:layout_height="70dp"
+        android:backgroundTint="@color/blue"
+        android:text="Huỷ bỏ"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveRegister"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
