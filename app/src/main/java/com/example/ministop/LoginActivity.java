@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(txtusername.getText().toString().equals("0948462040") && txtpassword.getText().toString().equals("123"))
                 {
-                    Toast.makeText(getApplicationContext(), "Login thanh cong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
                     SharedPreferences.Editor editor = luutru.edit();
                     if(chkSave.isChecked())
                     {
@@ -67,7 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                     }
                     editor.putBoolean("saveinfo", chkSave.isChecked());
                     editor.commit();
-
+                    Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(intent1);
                 }
             }
         });
