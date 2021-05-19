@@ -31,6 +31,7 @@
            android:layout_height="match_parent"
            android:background="@color/white"
            android:id="@+id/searchview"
+           android:queryHint="Sushi"
            ></SearchView>
             </androidx.appcompat.widget.Toolbar>
             <ViewFlipper
