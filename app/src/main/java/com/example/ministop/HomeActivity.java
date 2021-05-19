@@ -1,7 +1,11 @@
 package com.example.ministop;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -23,6 +28,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -40,7 +46,9 @@ public class HomeActivity extends AppCompatActivity{
     String url = "http://192.168.1.3/wsministop/getdanhmuc.php";
 
     ViewFlipper viewFlipper;
-
+    DrawerLayout drawerLayout;
+    Toolbar toolbar;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +58,11 @@ public class HomeActivity extends AppCompatActivity{
         //Ánh xạ
         recyclerView = findViewById(R.id.recycleView_option);
         viewFlipper = findViewById(R.id.viewflipper);
+        drawerLayout = findViewById(R.id.drawerlayout);
+        toolbar = findViewById(R.id.toolbar);
+        navigationView = findViewById(R.id.nagivationview);
         //
+        
 
         optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu);
         recyclerView.setAdapter(optionsAdapter_recycle);

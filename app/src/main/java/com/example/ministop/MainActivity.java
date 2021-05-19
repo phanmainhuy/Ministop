@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         ColorDrawable colorDrawable
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity{
         actionBar.setTitle("");
         String title = actionBar.getTitle().toString();
 
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(intent);
             }
         },200);
+
 
     }
 }
