@@ -11,46 +11,75 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationMenu;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity{
 
     FrameLayout frameLayout;
     Fragment currentFragment;
-    BottomNavigationView bottomNavigationView;
+    RecyclerView recyclerView;
+    ArrayList<Options> dulieu = new ArrayList<>();
+    OptionsAdapter_Recycle optionsAdapter_recycle;
+    String url = "http://192.168.1.3/wsministop/getdanhmuc.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_trangchu);
 
-        frameLayout = findViewById(R.id.layout_options);
-        bottomNavigationView =findViewById(R.id.navigationBottom);
+        recyclerView = findViewById(R.id.recycleView_option);
 
-        LoadFragment(new Fragment_Home());
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id)
-                {
-                    case R.id.mnu_home:
-                        currentFragment = new Fragment_Home();
-                        break;
-                }
-                LoadFragment(currentFragment);
-
-                return true;
-            }
-        });
+        optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu);
+        recyclerView.setAdapter(optionsAdapter_recycle);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        LayDanhMucSP();
     }
-    public  void LoadFragment(Fragment fragment)
+
+    public void LayDanhMucSP()
     {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.layout_options,fragment);
-        transaction.commit();
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for(int i = 0; i < response.length(); i++)
+                {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        dulieu.add(new Options(jsonObject.getString("iddanhmucsp"),jsonObject.getString("tendanhmucsp"), jsonObject.getString("hinhanh")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                optionsAdapter_recycle.notifyDataSetChanged();
+            }
+        };
+
+        Response.ErrorListener thatbai = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,thanhcong,thatbai);
+        requestQueue.add(jsonArrayRequest);
     }
+
 }

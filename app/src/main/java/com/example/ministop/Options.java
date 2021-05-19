@@ -3,20 +3,22 @@ package com.example.ministop;
 import java.io.Serializable;
 
 public class Options implements Serializable {
-    int hinh;
+    String ma;
     String ten;
+    String hinh;
 
-    public Options(int hinh, String ten) {
-        this.hinh = hinh;
+    public Options(String ma, String ten, String hinh) {
+        this.ma = ma;
         this.ten = ten;
-    }
-
-    public int getHinh() {
-        return hinh;
-    }
-
-    public void setHinh(int hinh) {
         this.hinh = hinh;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     public String getTen() {
@@ -26,4 +28,15 @@ public class Options implements Serializable {
     public void setTen(String ten) {
         this.ten = ten;
     }
+
+    public String getHinh() {
+        return hinh;
+    }
+
+    public void setHinh(String hinh) {
+        this.hinh = hinh;
+    }
 }
+
+
+
