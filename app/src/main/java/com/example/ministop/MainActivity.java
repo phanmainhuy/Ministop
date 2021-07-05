@@ -18,13 +18,13 @@ public class MainActivity extends AppCompatActivity{
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#fdcc32"));
+        //ColorDrawable colorDrawable
+                //= new ColorDrawable(Color.parseColor("#fdcc32"));
         // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
+        //actionBar.setBackgroundDrawable(colorDrawable);
         //title
-        actionBar.setTitle("");
-        String title = actionBar.getTitle().toString();
+        //actionBar.setTitle("");
+        //String title = actionBar.getTitle().toString();
 
 
         new Handler().postDelayed(new Runnable() {
