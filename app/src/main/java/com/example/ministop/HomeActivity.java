@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity{
     RecyclerView recyclerView;
     ArrayList<Options> dulieu = new ArrayList<>();
     OptionsAdapter_Recycle optionsAdapter_recycle;
-    String url = "http://192.168.1.3/wsministop/getdanhmuc.php";
+    String url = "http://192.168.1.5/wsministop/getdanhmuc.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
@@ -75,7 +75,7 @@ public class HomeActivity extends AppCompatActivity{
     }
 
      void loadViewFlipper() {
-         String urlslide = "http://192.168.1.3/wsministop/slide/";
+         String urlslide = "http://192.168.1.5/wsministop/slide/";
          ArrayList<String> mangslide = new ArrayList<>();
 
          mangslide.add(urlslide +"1.jpg");
