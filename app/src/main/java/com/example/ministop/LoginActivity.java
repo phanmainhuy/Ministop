@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(""); //Thiết lập tiêu đề
-        actionBar.hide();
+        //actionBar.hide();
         String title = actionBar.getTitle().toString();
 
         //anh xa
