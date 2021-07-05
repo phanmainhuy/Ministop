@@ -32,8 +32,10 @@ public class LoginActivity extends AppCompatActivity {
                 = new ColorDrawable(Color.parseColor("#fdcc32"));
 
         // Set BackgroundDrawable
+
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle(""); //Thiết lập tiêu đề
+        actionBar.hide();
         String title = actionBar.getTitle().toString();
 
         //anh xa
