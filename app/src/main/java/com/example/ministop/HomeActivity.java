@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Notification;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,7 +51,7 @@ public class HomeActivity extends AppCompatActivity{
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
-
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,9 +63,10 @@ public class HomeActivity extends AppCompatActivity{
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nagivationview);
+        bottomNavigationView = findViewById(R.id.navigation_bottom);
         //
-        
 
+        //Load du lieu
         optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu);
         recyclerView.setAdapter(optionsAdapter_recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
@@ -72,6 +74,33 @@ public class HomeActivity extends AppCompatActivity{
 
         loadViewFlipper();
 
+        //Cai dat cu click vao moi item cua menu bottom
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id)
+                {
+                    case R.id.mn_home:
+                        Intent intent1 = new Intent(HomeActivity.this, HomeActivity.class);
+                        startActivity(intent1);
+                        break;
+                    /*case R.id.mn_notifications:
+                        Intent intent2 = new Intent(HomeActivity.this, NoctificationsActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.mn_user:
+                        Intent intent3 = new Intent(HomeActivity.this, UserActivity.class);
+                        startActivity(intent3);
+                        break;
+                        case R.id.mnu_cart:
+                        Intent intent4 = new Intent(HomeActivity.this, CartActivity.class);
+                        startActivity(intent4);
+                        break;*/
+                }
+                return false;
+            }
+        });
     }
 
      void loadViewFlipper() {
