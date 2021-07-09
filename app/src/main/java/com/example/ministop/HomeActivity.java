@@ -40,18 +40,21 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity{
+public class HomeActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Options> dulieu = new ArrayList<>();
     OptionsAdapter_Recycle optionsAdapter_recycle;
-    String url = "http://192.168.1.5/wsministop/getdanhmuc.php";
+
+    //192.168.22.102
+    String url = "http://192.168.22.102/wsministop/getdanhmuc.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +72,7 @@ public class HomeActivity extends AppCompatActivity{
         //Load du lieu
         optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu);
         recyclerView.setAdapter(optionsAdapter_recycle);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         LayDanhMucSP();
 
         loadViewFlipper();
@@ -79,8 +82,7 @@ public class HomeActivity extends AppCompatActivity{
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch (id)
-                {
+                switch (id) {
                     case R.id.mn_home:
                         Intent intent1 = new Intent(HomeActivity.this, HomeActivity.class);
                         startActivity(intent1);
@@ -103,46 +105,44 @@ public class HomeActivity extends AppCompatActivity{
         });
     }
 
-     void loadViewFlipper() {
-         String urlslide = "http://192.168.1.5/wsministop/slide/";
-         ArrayList<String> mangslide = new ArrayList<>();
+    void loadViewFlipper() {
+        // y 192.168.22.102
+        String urlslide = "http://192.168.22.102/wsministop/slide/";
+        ArrayList<String> mangslide = new ArrayList<>();
 
-         mangslide.add(urlslide +"1.jpg");
-         mangslide.add(urlslide +"2.jpg");
-         mangslide.add(urlslide +"3.jpg");
-         mangslide.add(urlslide +"4.jpg");
-         mangslide.add(urlslide +"5.jpg");
-         mangslide.add(urlslide +"6.jpg");
-         mangslide.add(urlslide +"7.jpg");
-         mangslide.add(urlslide +"8.jpg");
-         mangslide.add(urlslide +"9.jpg");
-         mangslide.add(urlslide +"10.jpg");
+        mangslide.add(urlslide + "1.jpg");
+        mangslide.add(urlslide + "2.jpg");
+        mangslide.add(urlslide + "3.jpg");
+        mangslide.add(urlslide + "4.jpg");
+        mangslide.add(urlslide + "5.jpg");
+        mangslide.add(urlslide + "6.jpg");
+        mangslide.add(urlslide + "7.jpg");
+        mangslide.add(urlslide + "8.jpg");
+        mangslide.add(urlslide + "9.jpg");
+        mangslide.add(urlslide + "10.jpg");
 
-         for(int i = 0; i < mangslide.size(); i++)
-         {
-             ImageView imageView = new ImageView(this);
-             Picasso.with(this).load(mangslide.get(i)).into(imageView);
-             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-             viewFlipper.addView(imageView);
-         }
+        for (int i = 0; i < mangslide.size(); i++) {
+            ImageView imageView = new ImageView(this);
+            Picasso.with(this).load(mangslide.get(i)).into(imageView);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            viewFlipper.addView(imageView);
+        }
 
-         viewFlipper.setAutoStart(true);
-         viewFlipper.setFlipInterval(2000);
-         viewFlipper.startFlipping();
+        viewFlipper.setAutoStart(true);
+        viewFlipper.setFlipInterval(2000);
+        viewFlipper.startFlipping();
     }
 
-    public void LayDanhMucSP()
-    {
+    public void LayDanhMucSP() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
         Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
-                for(int i = 0; i < response.length(); i++)
-                {
+                for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        dulieu.add(new Options(jsonObject.getString("iddanhmucsp"),jsonObject.getString("tendanhmucsp"), jsonObject.getString("hinhanh")));
+                        dulieu.add(new Options(jsonObject.getString("iddanhmucsp"), jsonObject.getString("tendanhmucsp"), jsonObject.getString("hinhanh")));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -158,7 +158,7 @@ public class HomeActivity extends AppCompatActivity{
             }
         };
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url,thanhcong,thatbai);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
 
