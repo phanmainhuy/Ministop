@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
-    Button btnLogin;
+    Button btnLogin, btnDangky;
     CheckBox chkSave;
     EditText txtusername, txtpassword;
     SharedPreferences luutru;
@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         txtpassword = findViewById(R.id.txtpassword);
         chkSave = findViewById(R.id.chkSave);
         btnLogin = findViewById(R.id.btnLogin);
+        btnDangky = findViewById(R.id.btnRegister);
 
         luutru = getSharedPreferences("data", MODE_PRIVATE);
 
@@ -75,9 +76,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
 
     public void HandleLogin(View view)
@@ -85,10 +83,10 @@ public class LoginActivity extends AppCompatActivity {
         int id = view.getId();
         switch (id)
         {
-            case R.id.btnRegister:
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+           case R.id.btnRegister:
+               Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
-                break;
+               break;
             case R.id.btnfb:
                 FbClick();
                 break;
