@@ -46,14 +46,13 @@ public class HomeActivity extends AppCompatActivity {
     ArrayList<Options> dulieu = new ArrayList<>();
     OptionsAdapter_Recycle optionsAdapter_recycle;
 
-    //192.168.22.102
-    String url = "http://192.168.22.102/wsministop/getdanhmuc.php";
+    //Y: 192.168.22.102     //Ru: 192.168.1.5
+    String url = "http://192.168.1.5/wsministop/getdanhmuc.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
-    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +65,6 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.nagivationview);
-        bottomNavigationView = findViewById(R.id.navigation_bottom);
         //
 
         //Load du lieu
@@ -76,38 +74,11 @@ public class HomeActivity extends AppCompatActivity {
         LayDanhMucSP();
 
         loadViewFlipper();
-
-        //Cai dat cu click vao moi item cua menu bottom
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int id = item.getItemId();
-                switch (id) {
-                    case R.id.mn_home:
-                        Intent intent1 = new Intent(HomeActivity.this, HomeActivity.class);
-                        startActivity(intent1);
-                        break;
-                    /*case R.id.mn_notifications:
-                        Intent intent2 = new Intent(HomeActivity.this, NoctificationsActivity.class);
-                        startActivity(intent2);
-                        break;
-                    case R.id.mn_user:
-                        Intent intent3 = new Intent(HomeActivity.this, UserActivity.class);
-                        startActivity(intent3);
-                        break;
-                        case R.id.mnu_cart:
-                        Intent intent4 = new Intent(HomeActivity.this, CartActivity.class);
-                        startActivity(intent4);
-                        break;*/
-                }
-                return false;
-            }
-        });
     }
 
     void loadViewFlipper() {
-        // y 192.168.22.102
-        String urlslide = "http://192.168.22.102/wsministop/slide/";
+        // Y: 192.168.22.102    //Ru: 192.168.1.5
+        String urlslide = "http://192.168.1.5/wsministop/slide/";
         ArrayList<String> mangslide = new ArrayList<>();
 
         mangslide.add(urlslide + "1.jpg");

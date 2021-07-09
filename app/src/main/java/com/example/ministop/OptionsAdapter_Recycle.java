@@ -17,7 +17,8 @@ import java.util.ArrayList;
 public class OptionsAdapter_Recycle extends RecyclerView.Adapter<OptionsAdapter_Recycle.KHUNGNHIN> {
     Context context;
     ArrayList<Options> dulieu;
-    String url = "http://192.168.22.102/wsministop/hinhanh/";
+    //Y:192.168.22.102    //Ru:192.168.1.5
+    String url = "http://192.168.1.5/wsministop/hinhanh/";
 
     public OptionsAdapter_Recycle(Context context, ArrayList<Options> dulieu) {
         this.context = context;

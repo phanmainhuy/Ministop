@@ -64,20 +64,6 @@
         </FrameLayout>
         </LinearLayout>
     </ScrollView>
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/navigation_bottom"
-        app:menu="@menu/menu_bottom_navigation"
-        app:itemTextColor="@color/blue"
-        android:background="@color/yellow"
-        app:itemIconTint="@color/blue">
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-</RelativeLayout>
         <com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
