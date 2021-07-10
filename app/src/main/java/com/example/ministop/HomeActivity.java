@@ -109,6 +109,24 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper.startFlipping();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.mnu_user:
+                Intent intent = new Intent(HomeActivity.this, UserActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.mnu_cart:
+                Intent intent1 = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
     public void LayDanhMucSP() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
 
