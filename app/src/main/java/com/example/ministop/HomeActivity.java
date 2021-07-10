@@ -14,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Notification;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -41,11 +44,18 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //navigation handle
+    private int mSelectedId;
+    private static final String SELECTED_ITEM_ID = "selected"; //nguoi dung da select item
+    //private static final String FRIST_TIME = "fist_time"; // nguoi dung select lan dau
+    private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
+
 
     RecyclerView recyclerView;
     ArrayList<Options> dulieu = new ArrayList<>();
     OptionsAdapter_Recycle optionsAdapter_recycle;
+
 
     //Y: 192.168.22.102     //Ru: 192.168.1.5
     String url = "http://192.168.22.102/wsministop/getdanhmuc.php";
@@ -68,17 +78,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolbar);
         navigationLeft = findViewById(R.id.nagivationviewLeft);
+        //Xu ly Navigation Left
+        //tao su kien click navigationLeft
         navigationLeft.setNavigationItemSelectedListener(this);
-        //
+        //Xu ly khong lap Activity khi chon item Navigation
+        showDrawer();
+//        if(!didUserSeeDrawer()) //first time
+//        {
+//            showDrawer();
+//            markDrawerSeen();//khong duoc hien thi vi nguoi dung da chon
+//        }
+//        else
+//        {
+//            hideDrawer();
+//        }
+        //Luu su kien tu acvivity da chon
+        mSelectedId = savedInstanceState == null ? R.id.nagivationviewLeft : savedInstanceState.getInt(SELECTED_ITEM_ID);
+        navigation(mSelectedId);
 
         //Load du lieu
         optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu);
         recyclerView.setAdapter(optionsAdapter_recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         LayDanhMucSP();
-
         loadViewFlipper();
-
 
 
     }
@@ -112,22 +135,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         viewFlipper.startFlipping();
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//
-//        switch (item.getItemId()){
-//            case R.id.mnu_user:
-//                Intent intent = new Intent(HomeActivity.this, UserActivity.class);
-//                startActivity(intent);
-//                return true;
-//            case R.id.mnu_cart:
-//                Intent intent1 = new Intent(HomeActivity.this, CartActivity.class);
-//                startActivity(intent1);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 
     public void LayDanhMucSP() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -158,24 +165,69 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         requestQueue.add(jsonArrayRequest);
     }
 
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    //dieu huong navigation
+    private void navigation(int mSelectedId) {
         Intent intent = null;
-        if(item.getItemId() == R.id.mnu_user) {
+        if (mSelectedId == R.id.mnu_user) {
             drawerLayout.closeDrawer(GravityCompat.START);
             intent = new Intent(HomeActivity.this, UserActivity.class);
             startActivity(intent);
-            return true;
         }
-        if(item.getItemId() == R.id.mnu_cart) {
+        if (mSelectedId == R.id.mnu_cart) {
             drawerLayout.closeDrawer(GravityCompat.START);
             intent = new Intent(HomeActivity.this, CartActivity.class);
             startActivity(intent);
-            return true;
         }
-
-
-        return false;
     }
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        Intent intent = null;
+        menuItem.setChecked(true);
+        mSelectedId = menuItem.getItemId();
+        navigation(mSelectedId);
+        return true;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(SELECTED_ITEM_ID, mSelectedId);
+    }
+
+    //nut tro ve navigation
+    @Override
+    public void onBackPressed() {
+        if(drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        else
+        {
+            super.onBackPressed();
+        }
+    }
+
+    private  void showDrawer()
+    {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    private  void hideDrawer()
+    {
+        drawerLayout.closeDrawer(GravityCompat.START);
+    }
+//    private boolean didUserSeeDrawer()
+//    {
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mUserSawDrawer = sharedPreferences.getBoolean(FRIST_TIME, false);
+//        return mUserSawDrawer;
+//    }
+//    private void markDrawerSeen()
+//    {
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mUserSawDrawer = true;
+//        sharedPreferences.edit().putBoolean(FRIST_TIME, mUserSawDrawer).apply();
+//    }
+
 }
