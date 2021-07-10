@@ -1,77 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <androidx.drawerlayout.widget.DrawerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:id="@+id/drawerlayout"
-        >
-    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/yellow">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/imageView_logo"
-                    android:layout_width="80dp"
-                    android:layout_height="50dp"
-                    app:srcCompat="@drawable/logo" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/yellow"
+                    android:padding="5dp">
 
-       <SearchView
-           android:layout_width="300dp"
-           android:layout_height="match_parent"
-           android:background="@color/white"
-           android:id="@+id/searchview"
-           android:queryHint="Sushi"
-           ></SearchView>
-            </androidx.appcompat.widget.Toolbar>
-            <ViewFlipper
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:id="@+id/viewflipper"
-                ></ViewFlipper>
-    <androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/recycleView_option"
-    android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
+                    <ImageView
+                        android:id="@+id/imageView_logo"
+                        android:layout_width="80dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/logo" />
 
-        <FrameLayout
-            android:id="@+id/layouthost"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/blue">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gắn danh sách sp ở đây"
-                android:textSize="30sp"
-                android:textColor="@color/white"></TextView>
-        </FrameLayout>
-        </LinearLayout>
-    </ScrollView>
+                    <SearchView
+                        android:id="@+id/searchview"
+                        android:layout_width="320dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:queryHint="Sushi"></SearchView>
+                </androidx.appcompat.widget.Toolbar>
+
+                <ViewFlipper
+                    android:id="@+id/viewflipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"></ViewFlipper>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleView_option"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
+
+                <FrameLayout
+                    android:id="@+id/layouthost"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/blue">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Gắn danh sách sp ở đây"
+                        android:textColor="@color/white"
+                        android:textSize="30sp"></TextView>
+                </FrameLayout>
+            </LinearLayout>
+        </ScrollView>
+
         <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nagivationviewLeft"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/nagivationview"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
-            app:menu="@menu/menu_navigation"
-            >
-        </com.google.android.material.navigation.NavigationView>
+            app:menu="@menu/menu_navigation"></com.google.android.material.navigation.NavigationView>
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

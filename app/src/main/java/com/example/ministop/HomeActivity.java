@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -47,12 +48,12 @@ public class HomeActivity extends AppCompatActivity {
     OptionsAdapter_Recycle optionsAdapter_recycle;
 
     //Y: 192.168.22.102     //Ru: 192.168.1.5
-    String url = "http://192.168.1.5/wsministop/getdanhmuc.php";
+    String url = "http://192.168.22.102/wsministop/getdanhmuc.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
-    NavigationView navigationView;
+    NavigationView navigationLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper = findViewById(R.id.viewflipper);
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolbar);
-        navigationView = findViewById(R.id.nagivationview);
+        navigationLeft = findViewById(R.id.nagivationviewLeft);
         //
 
         //Load du lieu
@@ -74,11 +75,15 @@ public class HomeActivity extends AppCompatActivity {
         LayDanhMucSP();
 
         loadViewFlipper();
+
+
+
     }
+    
 
     void loadViewFlipper() {
         // Y: 192.168.22.102    //Ru: 192.168.1.5
-        String urlslide = "http://192.168.1.5/wsministop/slide/";
+        String urlslide = "http://192.168.22.102/wsministop/slide/";
         ArrayList<String> mangslide = new ArrayList<>();
 
         mangslide.add(urlslide + "1.jpg");
@@ -133,4 +138,8 @@ public class HomeActivity extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
-}
+
+
+
+
+    }

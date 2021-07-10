@@ -1,25 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-        <item
-            android:id="@+id/mnu_camera"
-            android:icon="@drawable/ic_baseline_camera_alt_24"
-            android:title="Camera" />
-        <item
-            android:id="@+id/mnu_gallery"
-            android:icon="@drawable/ic_baseline_picture_in_picture_24"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/mnu_contact"
-            android:icon="@drawable/ic_baseline_contacts_24"
-            android:title="Contact" />
-        <item
-            android:id="@+id/mnu_message"
-            android:icon="@drawable/ic_baseline_message_24"
-            android:title="Message" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
     <item
-        android:id="@+id/mnu_adress"
+        android:id="@+id/mnu_user"
+        android:icon="@drawable/username"
+        android:title="User"
+        />
+    <item
+        android:id="@+id/mnu_cart"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Cart" />
+    <item
+        android:id="@+id/mnu_camera"
+        android:icon="@drawable/ic_baseline_camera_alt_24"
+        android:title="Camera" />
+    <item
+        android:id="@+id/mnu_gallery"
+        android:icon="@drawable/ic_baseline_picture_in_picture_24"
+        android:title="Gallery" />
+    <item
+        android:id="@+id/mnu_contact"
+        android:icon="@drawable/ic_baseline_contacts_24"
+        android:title="Contact" />
+    <item
+        android:id="@+id/mnu_message"
+        android:icon="@drawable/ic_baseline_message_24"
+        android:title="Message" />
+    <item
+        android:id="@+id/mnu_address"
         android:icon="@drawable/ic_baseline_map_24"
-        android:title="Adress" />
+        android:title="Address" />
 
 </menu>
