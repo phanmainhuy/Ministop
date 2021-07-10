@@ -41,7 +41,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     RecyclerView recyclerView;
     ArrayList<Options> dulieu = new ArrayList<>();
@@ -52,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
+
     Toolbar toolbar;
     NavigationView navigationLeft;
 
@@ -63,9 +64,11 @@ public class HomeActivity extends AppCompatActivity {
         //Ánh xạ
         recyclerView = findViewById(R.id.recycleView_option);
         viewFlipper = findViewById(R.id.viewflipper);
+
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolbar);
         navigationLeft = findViewById(R.id.nagivationviewLeft);
+        navigationLeft.setNavigationItemSelectedListener(this);
         //
 
         //Load du lieu
@@ -109,23 +112,22 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper.startFlipping();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        switch (item.getItemId()){
-            case R.id.mnu_user:
-                Intent intent = new Intent(HomeActivity.this, UserActivity.class);
-                startActivity(intent);
-                return true;
-            case R.id.mnu_cart:
-                Intent intent1 = new Intent(HomeActivity.this, CartActivity.class);
-                startActivity(intent1);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//
+//        switch (item.getItemId()){
+//            case R.id.mnu_user:
+//                Intent intent = new Intent(HomeActivity.this, UserActivity.class);
+//                startActivity(intent);
+//                return true;
+//            case R.id.mnu_cart:
+//                Intent intent1 = new Intent(HomeActivity.this, CartActivity.class);
+//                startActivity(intent1);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     public void LayDanhMucSP() {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -157,7 +159,23 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        Intent intent = null;
+        if(item.getItemId() == R.id.mnu_user) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            intent = new Intent(HomeActivity.this, UserActivity.class);
+            startActivity(intent);
+            return true;
+        }
+        if(item.getItemId() == R.id.mnu_cart) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+            intent = new Intent(HomeActivity.this, CartActivity.class);
+            startActivity(intent);
+            return true;
+        }
 
 
-
+        return false;
     }
+}
