@@ -23,13 +23,14 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         ActionBar actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#fdcc32"));
-
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(""); //Thiết lập tiêu đề
-        String title = actionBar.getTitle().toString();
+        actionBar.hide();
+//        ColorDrawable colorDrawable
+//                = new ColorDrawable(Color.parseColor("#fdcc32"));
+//
+//        // Set BackgroundDrawable
+//        actionBar.setBackgroundDrawable(colorDrawable);
+//        actionBar.setTitle(""); //Thiết lập tiêu đề
+//        String title = actionBar.getTitle().toString();
 
         //anh xa
         //button

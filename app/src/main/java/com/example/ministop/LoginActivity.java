@@ -27,13 +27,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         ActionBar actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#fdcc32"));
-        // Set BackgroundDrawable
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle(""); //Thiết lập tiêu đề
-        //actionBar.hide();
-        String title = actionBar.getTitle().toString();
+        actionBar.hide();
+//        ColorDrawable colorDrawable
+//                = new ColorDrawable(Color.parseColor("#fdcc32"));
+//        // Set BackgroundDrawable
+//        actionBar.setBackgroundDrawable(colorDrawable);
+//        actionBar.setTitle(""); //Thiết lập tiêu đề
+//        //actionBar.hide();
+//        String title = actionBar.getTitle().toString();
 
         //anh xa
         txtusername = findViewById(R.id.txtusername);
