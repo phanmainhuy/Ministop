@@ -79,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
-    
+
 
     void loadViewFlipper() {
         // Y: 192.168.22.102    //Ru: 192.168.1.5
