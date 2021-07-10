@@ -26,12 +26,14 @@ public class UserActivity extends AppCompatActivity {
 
 
         //doi mau thanh action bar
+
         ColorDrawable colorDrawable
                 = new ColorDrawable(Color.parseColor("#003894"));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle("Thông tin người dùng"); //Thiết lập tiêu đề
-        String title = actionBar.getTitle().toString();
+        //String title = actionBar.getTitle().toString();
+
 
 
         //anh xa
