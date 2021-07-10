@@ -14,34 +14,40 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class OptionsAdapter_Recycle extends RecyclerView.Adapter<OptionsAdapter_Recycle.KHUNGNHIN> {
+public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapter_Recycle.KHUNGNHIN> {
     Context context;
-    ArrayList<Options> dulieu;
-    //Y:192.168.22.102    //Ru:192.168.1.5
-    String url = "http://192.168.1.5/wsministop/hinhanh/";
 
-    public OptionsAdapter_Recycle(Context context, ArrayList<Options> dulieu) {
+    public ProductsAdapter_Recycle(Context context, ArrayList<Products> dulieu) {
         this.context = context;
         this.dulieu = dulieu;
-
     }
 
+    ArrayList<Products> dulieu;
+
+    //Y:192.168.22.102  //Ru:192.168.1.5
+    String url = "http://192.168.1.5/wsministop/sanpham/";
+
+
+
     @NonNull
+
     @Override
     public KHUNGNHIN onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_options,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_1dong_sanpham,null);
         return new KHUNGNHIN(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OptionsAdapter_Recycle.KHUNGNHIN holder, int position) {
-        Options options = dulieu.get(position);
+    public void onBindViewHolder(@NonNull ProductsAdapter_Recycle.KHUNGNHIN holder, int position) {
+        Products products = dulieu.get(position);
 
-        holder.ten.setText(options.ten);
         Picasso.with(context)
-                .load(url + options.hinh)
+                .load(url + products.hinh)
                 .placeholder(R.drawable.no_image_found)
                 .into(holder.hinh);
+
+        holder.ten.setText(products.ten);
+        holder.mota.setText(products.mota);
     }
 
     @Override
@@ -53,11 +59,13 @@ public class OptionsAdapter_Recycle extends RecyclerView.Adapter<OptionsAdapter_
     {
         ImageView hinh;
         TextView ten;
+        TextView mota;
 
         public KHUNGNHIN(@NonNull View itemView) {
             super(itemView);
-            hinh = itemView.findViewById(R.id.img_option);
-            ten = itemView.findViewById(R.id.tv_option);
+            hinh = itemView.findViewById(R.id.img_product);
+            ten = itemView.findViewById(R.id.tv_product1);
+            mota = itemView.findViewById(R.id.tv_product2);
         }
     }
 }

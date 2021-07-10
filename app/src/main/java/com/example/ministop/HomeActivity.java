@@ -52,13 +52,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
 
 
-    RecyclerView recyclerView;
+    RecyclerView recyclerView, recyclerView2;
+
     ArrayList<Options> dulieu = new ArrayList<>();
     OptionsAdapter_Recycle optionsAdapter_recycle;
 
+    ArrayList<Products> data = new ArrayList<>();
+    ProductsAdapter_Recycle productsAdapter_recycle;
 
     //Y: 192.168.22.102     //Ru: 192.168.1.5
-    String url = "http://192.168.22.102/wsministop/getdanhmuc.php";
+    String url = "http://192.168.1.5/wsministop/getdanhmuc.php";
+    String url2 = "http://192.168.1.5/wsministop/getsanpham.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
@@ -76,6 +80,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //Ánh xạ
         recyclerView = findViewById(R.id.recycleView_option);
+        recyclerView2 = findViewById(R.id.recycleView_product);
         viewFlipper = findViewById(R.id.viewflipper);
 
         drawerLayout = findViewById(R.id.drawerlayout);
@@ -99,20 +104,53 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mSelectedId = savedInstanceState == null ? R.id.nagivationviewLeft : savedInstanceState.getInt(SELECTED_ITEM_ID);
         navigation(mSelectedId);
 
-        //Load du lieu
+        //Load du lieu danh muc sp
         optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu);
         recyclerView.setAdapter(optionsAdapter_recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         LayDanhMucSP();
         loadViewFlipper();
+        //Load du lieu list san pham
+        productsAdapter_recycle = new ProductsAdapter_Recycle(this, data);
+        recyclerView2.setAdapter(productsAdapter_recycle);
+        recyclerView2.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        LaySanPham();
 
+    }
 
+    public void LaySanPham() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        data.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("mota"),jsonObject.getString("hinhanh")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                productsAdapter_recycle.notifyDataSetChanged();
+            }
+        };
+
+        Response.ErrorListener thatbai = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url2, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
     }
 
 
     void loadViewFlipper() {
         // Y: 192.168.22.102    //Ru: 192.168.1.5
-        String urlslide = "http://192.168.22.102/wsministop/slide/";
+        String urlslide = "http://192.168.1.5/wsministop/slide/";
         ArrayList<String> mangslide = new ArrayList<>();
 
         mangslide.add(urlslide + "1.jpg");

@@ -23,7 +23,8 @@
         android:text="TextView"
         android:textSize="15dp"
         android:layout_margin="10dp"
-        android:textColor="@color/black"
+        android:textColor="@color/yellow"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/img_option"
         app:layout_constraintStart_toStartOf="@+id/img_option"
         app:layout_constraintTop_toBottomOf="@+id/img_option" />

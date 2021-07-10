@@ -50,20 +50,17 @@
                     android:id="@+id/recycleView_option"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
-                    android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
+                    android:background="@color/blue"></androidx.recyclerview.widget.RecyclerView>
 
                 <FrameLayout
                     android:id="@+id/layouthost"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:background="@color/blue">
-
-                    <TextView
+                    android:layout_height="391dp"
+                    android:background="@color/yellow">
+                    <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Gắn danh sách sp ở đây"
-                        android:textColor="@color/white"
-                        android:textSize="30sp"></TextView>
+                        android:layout_height="match_parent"
+                        android:id="@+id/recycleView_product"></androidx.recyclerview.widget.RecyclerView>
                 </FrameLayout>
             </LinearLayout>
         </ScrollView>
