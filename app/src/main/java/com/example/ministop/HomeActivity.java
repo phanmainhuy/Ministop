@@ -71,6 +71,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_trangchu);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         //Ánh xạ
         recyclerView = findViewById(R.id.recycleView_option);
         viewFlipper = findViewById(R.id.viewflipper);

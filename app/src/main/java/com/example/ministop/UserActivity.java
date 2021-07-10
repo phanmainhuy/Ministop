@@ -1,8 +1,11 @@
 package com.example.ministop;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +17,14 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
+        ActionBar actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#003894"));
+        // Set BackgroundDrawable
+        actionBar.setBackgroundDrawable(colorDrawable);
+        actionBar.setTitle("Thông tin người dùng"); //Thiết lập tiêu đề
+        String title = actionBar.getTitle().toString();
 
 
         //anh xa
