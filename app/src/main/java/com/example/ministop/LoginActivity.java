@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(txtusername.getText().toString().equals("0948462040") && txtpassword.getText().toString().equals("123"))
                 {
-                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor = luutru.edit();
                     if(chkSave.isChecked())
                     {

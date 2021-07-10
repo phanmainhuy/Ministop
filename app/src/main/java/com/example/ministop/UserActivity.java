@@ -23,10 +23,7 @@ public class UserActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         //thanh tro ve home
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-
         //doi mau thanh action bar
-
         ColorDrawable colorDrawable
                 = new ColorDrawable(Color.parseColor("#003894"));
         // Set BackgroundDrawable
