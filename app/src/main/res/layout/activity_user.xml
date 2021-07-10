@@ -244,8 +244,6 @@
                 android:textSize="16dp"
                 android:hint="Địa chỉ"
                 android:textColorHint="@color/hint_txt" />
-
-
         </LinearLayout>
 
     </LinearLayout>
