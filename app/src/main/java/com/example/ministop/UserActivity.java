@@ -42,6 +42,7 @@ public class UserActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Lưu thông tin thành công", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(UserActivity.this, HomeActivity.class);
                 startActivity(intent);
             }
@@ -58,7 +59,6 @@ public class UserActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     @Override
