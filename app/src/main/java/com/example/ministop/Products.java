@@ -3,6 +3,20 @@ package com.example.ministop;
 import java.io.Serializable;
 
 public class Products implements Serializable {
+
+
+    String ma;
+    String ten;
+    String gia;
+    String hinh;
+
+    public Products(String ma, String ten, String gia, String hinh) {
+        this.ma = ma;
+        this.ten = ten;
+        this.gia = gia;
+        this.hinh = hinh;
+    }
+
     public String getMa() {
         return ma;
     }
@@ -19,12 +33,12 @@ public class Products implements Serializable {
         this.ten = ten;
     }
 
-    public String getMota() {
-        return mota;
+    public String getGia() {
+        return gia;
     }
 
-    public void setMota(String mota) {
-        this.mota = mota;
+    public void setGia(String gia) {
+        this.gia = gia;
     }
 
     public String getHinh() {
@@ -32,18 +46,6 @@ public class Products implements Serializable {
     }
 
     public void setHinh(String hinh) {
-        this.hinh = hinh;
-    }
-
-    String ma;
-    String ten;
-    String mota;
-    String hinh;
-
-    public Products(String ma, String ten, String mota, String hinh) {
-        this.ma = ma;
-        this.ten = ten;
-        this.mota = mota;
         this.hinh = hinh;
     }
 }

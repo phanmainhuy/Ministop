@@ -24,8 +24,8 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
 
     ArrayList<Products> dulieu;
 
-    //Y:192.168.22.102  //Ru:192.168.1.5
-    String url = "http://192.168.1.5/wsministop/sanpham/";
+    //Y:192.168.22.102  //Ru:192.168.1.7
+    String url = "http://192.168.1.7/wsministop/sanpham/";
 
 
 
@@ -47,7 +47,7 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
                 .into(holder.hinh);
 
         holder.ten.setText(products.ten);
-        holder.mota.setText(products.mota);
+        holder.gia.setText(products.gia + " đồng");
     }
 
     @Override
@@ -59,13 +59,13 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
     {
         ImageView hinh;
         TextView ten;
-        TextView mota;
+        TextView gia;
 
         public KHUNGNHIN(@NonNull View itemView) {
             super(itemView);
             hinh = itemView.findViewById(R.id.img_product);
             ten = itemView.findViewById(R.id.tv_product1);
-            mota = itemView.findViewById(R.id.tv_product2);
+            gia = itemView.findViewById(R.id.tv_product2);
         }
     }
 }

@@ -60,9 +60,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ArrayList<Products> data = new ArrayList<>();
     ProductsAdapter_Recycle productsAdapter_recycle;
 
-    //Y: 192.168.22.102     //Ru: 192.168.1.5
-    String url = "http://192.168.1.5/wsministop/getdanhmuc.php";
-    String url2 = "http://192.168.1.5/wsministop/getsanpham.php";
+    //Y: 192.168.22.102     //Ru: 192.168.1.7
+    String url = "http://192.168.1.7/wsministop/getdanhmuc.php";
+    String url2 = "http://192.168.1.7/wsministop/getsanpham.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
@@ -127,7 +127,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        data.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("mota"),jsonObject.getString("hinhanh")));
+                        data.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("gia"),jsonObject.getString("hinhanh")));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
