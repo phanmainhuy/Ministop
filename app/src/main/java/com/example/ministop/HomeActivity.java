@@ -51,6 +51,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //private static final String FRIST_TIME = "fist_time"; // nguoi dung select lan dau
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
 
+    //Y:192.168.22.102    //Ru:192.168.1.7
+    String ip = "192.168.22.102";
 
     RecyclerView recyclerView, recyclerView2;
 
@@ -61,8 +63,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ProductsAdapter_Recycle productsAdapter_recycle;
 
     //Y: 192.168.22.102     //Ru: 192.168.1.7
-    String url = "http://192.168.1.7/wsministop/getdanhmuc.php";
-    String url2 = "http://192.168.1.7/wsministop/getsanpham.php";
+    String url = "http://" + ip +"/wsministop/getdanhmuc.php";
+    String url2 = "http://" + ip + "/wsministop/getsanpham.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
@@ -150,7 +152,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     void loadViewFlipper() {
         // Y: 192.168.22.102    //Ru: 192.168.1.5
-        String urlslide = "http://192.168.1.5/wsministop/slide/";
+        String urlslide = "http://" + ip + "/wsministop/slide/";
         ArrayList<String> mangslide = new ArrayList<>();
 
         mangslide.add(urlslide + "1.jpg");
@@ -210,20 +212,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void navigation(int mSelectedId) {
         Intent intent = null;
         if (mSelectedId == R.id.mnu_user) {
-            drawerLayout.closeDrawer(GravityCompat.START);
             intent = new Intent(HomeActivity.this, UserActivity.class);
             startActivity(intent);
+
+            drawerLayout.closeDrawer(GravityCompat.START);
         }
         if (mSelectedId == R.id.mnu_cart) {
-            drawerLayout.closeDrawer(GravityCompat.START);
             intent = new Intent(HomeActivity.this, CartActivity.class);
             startActivity(intent);
+
+            drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
-        Intent intent = null;
+        //Intent intent = null;
         menuItem.setChecked(true);
         mSelectedId = menuItem.getItemId();
         navigation(mSelectedId);

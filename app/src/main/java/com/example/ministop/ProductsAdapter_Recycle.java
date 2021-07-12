@@ -25,7 +25,8 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
     ArrayList<Products> dulieu;
 
     //Y:192.168.22.102  //Ru:192.168.1.7
-    String url = "http://192.168.1.7/wsministop/sanpham/";
+    String ip = "192.168.22.102";
+    String url = "http://" + ip + "/wsministop/sanpham/";
 
 
 
