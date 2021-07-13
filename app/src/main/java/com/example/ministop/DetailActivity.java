@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class DetailActivity extends AppCompatActivity {
         txtTen = findViewById(R.id.tv_CTSP1);
         txtGia = findViewById(R.id.tv_CTSP2);
         txtMoTa = findViewById(R.id.tv_CTSP3);
+        button = findViewById(R.id.btn_addCart);
 
         //Gui du lieu tu home qua
         Intent intent = getIntent();
@@ -51,5 +53,13 @@ public class DetailActivity extends AppCompatActivity {
             txtMoTa.setText(products.getMota());
 
         }
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(DetailActivity.this,CartActivity.class);
+                startActivity(intent1);
+            }
+        });
     }
 }

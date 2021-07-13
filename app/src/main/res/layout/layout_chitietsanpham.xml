@@ -89,10 +89,11 @@
         android:id="@+id/btn_addCart"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
+        android:backgroundTint="@color/blue_deep"
+        android:onClick="Cart"
         android:text="Thêm vào giỏ hàng"
         android:textColor="@color/white"
         android:textSize="20dp"
-        android:backgroundTint="@color/blue_deep"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
