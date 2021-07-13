@@ -9,12 +9,14 @@ public class Products implements Serializable {
     String ten;
     String gia;
     String hinh;
+    String mota;
 
-    public Products(String ma, String ten, String gia, String hinh) {
+    public Products(String ma, String ten, String gia, String hinh, String mota) {
         this.ma = ma;
         this.ten = ten;
         this.gia = gia;
         this.hinh = hinh;
+        this.mota = mota;
     }
 
     public String getMa() {
@@ -47,5 +49,12 @@ public class Products implements Serializable {
 
     public void setHinh(String hinh) {
         this.hinh = hinh;
+    }
+    public String getMota() {
+        return mota;
+    }
+
+    public void setMota(String mota) {
+        this.mota = mota;
     }
 }

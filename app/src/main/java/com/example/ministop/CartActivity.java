@@ -15,11 +15,6 @@ import android.widget.Toolbar;
 public class CartActivity extends AppCompatActivity {
 
     Button btnPay, btnContinue;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

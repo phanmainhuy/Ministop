@@ -44,7 +44,7 @@ import org.json.JSONObject;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnClickListener {
     //navigation handle
     private int mSelectedId;
     private static final String SELECTED_ITEM_ID = "selected"; //nguoi dung da select item
@@ -113,7 +113,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         LayDanhMucSP();
         loadViewFlipper();
         //Load du lieu list san pham
-        productsAdapter_recycle = new ProductsAdapter_Recycle(this, data);
+        productsAdapter_recycle = new ProductsAdapter_Recycle(this, data,this);
         recyclerView2.setAdapter(productsAdapter_recycle);
         recyclerView2.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         LaySanPham();
@@ -129,7 +129,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        data.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("gia"),jsonObject.getString("hinhanh")));
+                        data.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("gia"),jsonObject.getString("hinhanh"),jsonObject.getString("mota")));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -262,6 +262,31 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     {
         drawerLayout.closeDrawer(GravityCompat.START);
     }
+
+
+    //---------------------------------------------------------------------------//
+    //---------------------Xu ly su kien click item san pham--------------------//
+    // -------------------------------------------------------------------------//
+
+    @Override
+    public void itemClick(Products products) {
+        Intent intent = new Intent(this,DetailActivity.class);
+        intent.putExtra("key1",products);
+        startActivity(intent);
+    }
+
+    //---------------------------------------------------------------------------//
+    //--------------------------------------------------------------------------//
+    // -------------------------------------------------------------------------//
+
+
+
+
+
+
+
+
+
 //    private boolean didUserSeeDrawer()
 //    {
 //        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
