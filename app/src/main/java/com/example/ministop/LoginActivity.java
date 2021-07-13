@@ -84,6 +84,11 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
                     startActivity(intent1);
                 }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
     }
