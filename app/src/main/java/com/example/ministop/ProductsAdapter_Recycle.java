@@ -50,7 +50,7 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
                 .into(holder.hinh);
 
         holder.ten.setText(products.ten);
-        holder.mota.setText(products.mota);
+        //holder.mota.setText(products.mota);
         holder.gia.setText(products.gia + " đồng");
 
 
@@ -69,14 +69,14 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
         ImageView hinh;
         TextView ten;
         TextView gia;
-        TextView mota;
+        //TextView mota;
 
         public KHUNGNHIN(@NonNull View itemView) {
             super(itemView);
 
             hinh = itemView.findViewById(R.id.img_product);
             ten = itemView.findViewById(R.id.tv_product1);
-            mota = itemView.findViewById(R.id.tv_product2);
+            //mota = itemView.findViewById(R.id.tv_product2);
             gia = itemView.findViewById(R.id.tv_product3);
 
 
