@@ -52,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
 
     //Y:192.168.22.102    //Ru:192.168.1.7
-    String ip = "192.168.22.102";
+    String ip = "192.168.1.7";
 
     RecyclerView recyclerView, recyclerView2;
 
