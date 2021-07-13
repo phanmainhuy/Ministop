@@ -107,7 +107,7 @@
         tools:layout_editor_absoluteX="20dp" />
 
     <EditText
-        android:id="@+id/txt_adress"
+        android:id="@+id/txt_address"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -131,7 +131,7 @@
         android:onClick="HandleRegister"
         android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/txt_adress"
+        app:layout_constraintTop_toBottomOf="@+id/txt_address"
         tools:layout_editor_absoluteX="20dp" />
     <Button
         android:id="@+id/btnCancel"
