@@ -37,15 +37,15 @@
                         android:layout_height="50dp"
                         app:srcCompat="@drawable/logo"
                         />
-
-                    <SearchView
-                        android:id="@+id/searchview"
-                        android:layout_width="320dp"
+                    <TextView
+                        android:layout_width="300dp"
                         android:layout_height="match_parent"
-                        android:background="@color/white"
-                        android:searchIcon="@drawable/ic_baseline_search_24_black"
-                        app:closeIcon="@drawable/ic_baseline_search_24_black"
-                        ></SearchView>
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:fontFamily="serif"
+                        android:text="Deliciousness, Friendly, Convenienece"
+                        android:textColor="@color/blue_deep"
+                        ></TextView>
                 </androidx.appcompat.widget.Toolbar>
 
                 <ViewFlipper

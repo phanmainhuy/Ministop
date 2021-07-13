@@ -3,6 +3,7 @@ package com.example.ministop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,11 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Notification;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -72,13 +76,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationLeft;
 
+    SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_trangchu);
 
+        //Action bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
+        //actionBar.hide();
+        actionBar.setTitle("Home");
 
         //Ánh xạ
         recyclerView = findViewById(R.id.recycleView_option);
@@ -274,18 +281,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         intent.putExtra("key1",products);
         startActivity(intent);
     }
+    //---------------------------------------------------------------------------//
+
+
+
+
 
     //---------------------------------------------------------------------------//
-    //--------------------------------------------------------------------------//
+    //------------------------------Xu ly search view----------------------------//
     // -------------------------------------------------------------------------//
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search,menu);
 
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                productsAdapter_recycle.getFilter().filter(query);
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                productsAdapter_recycle.getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
 
-
-
-
-
+    // -------------------------------------------------------------------------//
 
 //    private boolean didUserSeeDrawer()
 //    {

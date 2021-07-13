@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +18,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapter_Recycle.KHUNGNHIN> {
+public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapter_Recycle.KHUNGNHIN> implements Filterable {
     Context context;
     ArrayList<Products> dulieu;
+    ArrayList<Products> dulieusearch;
     private OnClickListener listener;
 
     //Y:192.168.22.102  //Ru:192.168.1.7
@@ -30,7 +34,7 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
         this.context = context;
         this.dulieu = dulieu;
         this.listener = listener;
-
+        this.dulieusearch = dulieu;
     }
     @NonNull
 
@@ -63,6 +67,7 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
         return dulieu.size();
     }
 
+
     public class KHUNGNHIN extends RecyclerView.ViewHolder
     {
         Products products;
@@ -88,6 +93,42 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
                 }
             });
         }
+    }
 
+    //Search view cho san pham
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String strSearch = constraint.toString();
+                if(strSearch.isEmpty())
+                {
+                    dulieu = dulieusearch;
+                }
+                else
+                {
+                    ArrayList<Products> list = new ArrayList<>();
+                    for(Products products : dulieusearch)
+                    {
+                        if(products.getTen().toLowerCase().contains(strSearch.toLowerCase()))
+                        {
+                            list.add(products);
+                        }
+                    }
+                    dulieu = list;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = dulieu;
+
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                dulieu = (ArrayList<Products>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 }
