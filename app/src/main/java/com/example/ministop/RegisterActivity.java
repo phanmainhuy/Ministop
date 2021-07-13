@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         {
             case  R.id.btnSaveRegister:
                 Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(RegisterActivity.this, SuccessfulRegistrationActivity.class);
+                Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent1);
                 break;
             case  R.id.btnCancel:

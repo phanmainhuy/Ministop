@@ -57,6 +57,18 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(txtusername.getText().toString().equals(""))
+                {
+                    Toast.makeText(getApplicationContext(), "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(txtpassword.getText().toString().equals(""))
+                {
+                    Toast.makeText(getApplicationContext(), "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if(txtusername.getText().toString().equals("0948462040") && txtpassword.getText().toString().equals("123"))
                 {
                     Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
