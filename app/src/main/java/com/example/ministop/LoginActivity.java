@@ -101,11 +101,17 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent1);
                         }
-                        if(!txtusername.getText().toString().equals(i.sdt) || !txtpassword.getText().toString().equals(i.matkhau))
+                        if(txtusername.getText().toString().equals(i.sdt) && !txtpassword.getText().toString().equals(i.matkhau))
                         {
-                            Toast.makeText(getApplicationContext(), "Sai thông tin đăng nhập", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
                             return;
                         }
+                        if(!txtusername.getText().toString().equals(i.sdt) && !txtpassword.getText().toString().equals(i.matkhau))
+                        {
+                            Toast.makeText(getApplicationContext(), "Bạn chưa đăng ký tài khoản", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
 
                     }
 
