@@ -27,7 +27,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imgAvatar"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
 
@@ -47,10 +47,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/imgAvatar" />
 
                 <TextView
-                    android:id="@+id/lblNameUser"
+                    android:id="@+id/lbl_User_HoTenAva"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
@@ -91,7 +91,7 @@
                         android:textSize="16dp" />
 
                     <EditText
-                        android:id="@+id/txt_User_Name"
+                        android:id="@+id/txt_User_Hoten"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -152,7 +152,7 @@
                         android:textSize="16dp" />
 
                     <EditText
-                        android:id="@+id/editTextTextEmailAddress"
+                        android:id="@+id/txt_User_Email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -223,7 +223,7 @@
                         android:textSize="16dp" />
 
                     <EditText
-                        android:id="@+id/editTextDate"
+                        android:id="@+id/txt_User_Birthday"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

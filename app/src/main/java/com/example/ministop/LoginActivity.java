@@ -99,6 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putBoolean("saveinfo", chkSave.isChecked());
                             editor.commit();
                             Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
+                            intent1.putExtra("infoUser",user);
                             startActivity(intent1);
                         }
                         if(txtusername.getText().toString().equals(i.sdt) && !txtpassword.getText().toString().equals(i.matkhau))

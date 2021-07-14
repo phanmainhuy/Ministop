@@ -11,10 +11,22 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class UserActivity extends AppCompatActivity {
     Button btnSave, btnLogout;
+    NGUOIDUNG user;
+    ImageView avatarUser;
+    TextView tvNameAva, txtHoTen, txtSDT, txtEmail, txtNgaySinh , txtDiaChi;
+    RadioButton rdoNam, rdoNu;
+
+    //Y:192.168.22.102  //Ru:192.168.1.7
+    String ip = "192.168.22.102";
+    String url = "http://" + ip + "/wsministop/nguoidung/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +48,33 @@ public class UserActivity extends AppCompatActivity {
         //anh xa
         btnSave = findViewById(R.id.btn_User_Save);
         btnLogout = findViewById(R.id.btn_User_LogOut);
+        avatarUser = findViewById(R.id.imgAvatar);
+        tvNameAva = findViewById(R.id.lbl_User_HoTenAva);
+        txtHoTen = findViewById(R.id.txt_User_Hoten);
+        txtSDT = findViewById(R.id.txt_User_Phone);
+        txtEmail = findViewById(R.id.txt_User_Email);
+        rdoNu = findViewById(R.id.rdb_User_Nu);
+        rdoNam = findViewById(R.id.rdb_User_Nam);
+        txtNgaySinh = findViewById(R.id.txt_User_Birthday);
+        txtDiaChi = findViewById(R.id.txt_User_Address);
 
+
+
+
+        //Gui du lieu tu home qua
+//        Intent intent = getIntent();
+//        if(intent != null)
+//        {
+//            user = (NGUOIDUNG) intent.getSerializableExtra("infoUser");
+//
+//            //load hình từ url
+//            Picasso.with(this).load(url + user.getHinh()).placeholder(R.drawable.no_image_found).into(imageView);
+//            //Set lại id để load dữ liệu từ HomeActivity qua
+//            txtTen.setText(user.getTen());
+//            txtGia.setText(user.getGia());
+//            txtMoTa.setText(user.getMota());
+//
+//        }
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {
