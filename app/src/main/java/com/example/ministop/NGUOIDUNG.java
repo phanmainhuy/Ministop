@@ -1,6 +1,8 @@
 package com.example.ministop;
 
-public class NGUOIDUNG {
+import java.io.Serializable;
+
+public class NGUOIDUNG implements Serializable {
     String id;
     String sdt;
     String hoten;

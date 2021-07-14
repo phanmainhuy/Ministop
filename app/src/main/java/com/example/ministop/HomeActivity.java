@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
 
     //Y:192.168.22.102    //Ru:192.168.1.7
-    String ip = "192.168.1.7";
+    String ip = "192.168.22.102";
 
     RecyclerView recyclerView, recyclerView2;
 
@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //Action bar
         ActionBar actionBar = getSupportActionBar();
         //actionBar.hide();
-        actionBar.setTitle("Home");
+        actionBar.setTitle("Trang chủ");
 
         //Ánh xạ
         recyclerView = findViewById(R.id.recycleView_option);

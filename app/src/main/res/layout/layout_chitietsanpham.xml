@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/yellow">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/img_CTSP"
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textColor="@color/blue"
+        android:textColor="@color/black"
         android:textSize="20dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -89,7 +89,7 @@
         android:id="@+id/btn_addCart"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:backgroundTint="@color/blue_deep"
+        android:backgroundTint="@color/blue"
         android:onClick="Cart"
         android:text="Thêm vào giỏ hàng"
         android:textColor="@color/white"

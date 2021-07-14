@@ -20,7 +20,7 @@ public class DetailActivity extends AppCompatActivity {
     Products products;
 
     //Y:192.168.22.102  //Ru:192.168.1.7
-    String ip = "192.168.1.7";
+    String ip = "192.168.22.102";
     String url = "http://" + ip + "/wsministop/sanpham/";
 
     @Override
