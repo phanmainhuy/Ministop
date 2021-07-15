@@ -278,7 +278,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void itemClick(Products products) {
         Intent intent = new Intent(this,DetailActivity.class);
-        intent.putExtra("key1",products);
+//        intent.putExtra("key1",products);
+          DEPRESS.PRODUCT = products;
         startActivity(intent);
     }
     //---------------------------------------------------------------------------//

@@ -55,6 +55,7 @@ public class ProductsAdapter_Recycle extends RecyclerView.Adapter<ProductsAdapte
 
         holder.ten.setText(products.ten);
         //holder.mota.setText(products.mota);
+
         holder.gia.setText(products.gia + " đồng");
 
 

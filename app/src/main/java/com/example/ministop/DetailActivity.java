@@ -16,11 +16,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+
 public class DetailActivity extends AppCompatActivity {
 
     ImageView imageView;
     TextView txtTen, txtGia, txtMoTa;
-    Button button;
+    Button btnAddCart;
     Products products;
 
     //Y:192.168.22.102  //Ru:192.168.1.7
@@ -52,27 +54,56 @@ public class DetailActivity extends AppCompatActivity {
         txtTen = findViewById(R.id.tv_CTSP1);
         txtGia = findViewById(R.id.tv_CTSP2);
         txtMoTa = findViewById(R.id.tv_CTSP3);
-        button = findViewById(R.id.btn_addCart);
+        btnAddCart = findViewById(R.id.btn_addCart);
 
         //Gui du lieu tu home qua
         Intent intent = getIntent();
-        if(intent != null)
+        if(DEPRESS.PRODUCT != null)
         {
-            products = (Products) intent.getSerializableExtra("key1");
+//            products = (Products) intent.getSerializableExtra("key1");
 
             //load hình từ url
-            Picasso.with(this).load(url + products.getHinh()).placeholder(R.drawable.no_image_found).into(imageView);
+            Picasso.with(this).load(url + DEPRESS.PRODUCT.getHinh()).placeholder(R.drawable.no_image_found).into(imageView);
             //Set lại id để load dữ liệu từ HomeActivity qua
-            txtTen.setText(products.getTen());
-            txtGia.setText(products.getGia());
-            txtMoTa.setText(products.getMota());
+            txtTen.setText(DEPRESS.PRODUCT.getTen());
+            txtGia.setText(DEPRESS.PRODUCT.getGia());
+            txtMoTa.setText(DEPRESS.PRODUCT.getMota());
+
+
+
 
         }
 
-        button.setOnClickListener(new View.OnClickListener() {
+
+
+
+        btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(DetailActivity.this,CartActivity.class);
+                //Cart ton tai phan tu
+                if(DEPRESS.carts.size() > 0)//Chưa khai báo r
+                {
+                    boolean exist = false;
+                   for(int i =0; i < DEPRESS.carts.size(); i++)
+                   {
+                       if(DEPRESS.carts.get(i).getIdsp() == DEPRESS.PRODUCT.getMa())
+                       {
+                           DEPRESS.carts.get(i).setSoluong(DEPRESS.carts.get(i).getSoluong()+1);
+                            exist =true;
+                       }
+                   }
+                   if(exist == false)
+                   {
+                       DEPRESS.carts.add(new CART(DEPRESS.PRODUCT.getMa(),DEPRESS.PRODUCT.getHinh(), DEPRESS.PRODUCT.getTen(), DEPRESS.PRODUCT.getGia(), 1));
+                   }
+                }
+                //Cart null
+                else
+                {
+                    DEPRESS.carts.add(new CART(DEPRESS.PRODUCT.getMa(),DEPRESS.PRODUCT.getHinh(), DEPRESS.PRODUCT.getTen(), DEPRESS.PRODUCT.getGia(), 1));
+
+                }
+                Intent intent1 = new Intent(getApplicationContext(),CartActivity.class);
                 startActivity(intent1);
             }
         });
