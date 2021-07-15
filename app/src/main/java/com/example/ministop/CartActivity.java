@@ -35,7 +35,12 @@ public class CartActivity extends AppCompatActivity {
         btnPay = findViewById(R.id.btn_Cart_Pay);
         btnContinue = findViewById(R.id.btn_Cart_Continue);
 
-        
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
 
