@@ -16,6 +16,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 public class UserActivity extends AppCompatActivity {
     Button btnSave, btnLogout;
     NGUOIDUNG user;
@@ -59,22 +61,27 @@ public class UserActivity extends AppCompatActivity {
         txtDiaChi = findViewById(R.id.txt_User_Address);
 
 
+//        Gui du lieu tu Login
+        if(DEPRESS.USER != null)
+        {
+            user = DEPRESS.USER;
+
+            //load hình từ url
+            Picasso.with(this).load(url + user.getHinhanh()).placeholder(R.drawable.no_image_found).into(avatarUser);
+            tvNameAva.setText(user.getHoten());
+            txtHoTen.setText(user.getHoten());
+            txtSDT.setText(user.getSdt());
+            txtEmail.setText(user.getEmail());
+            txtNgaySinh.setText(user.getNgaysinh());
+            txtDiaChi.setText(user.getDiachi());
 
 
-        //Gui du lieu tu home qua
-//        Intent intent = getIntent();
-//        if(intent != null)
-//        {
-//            user = (NGUOIDUNG) intent.getSerializableExtra("infoUser");
-//
-//            //load hình từ url
-//            Picasso.with(this).load(url + user.getHinh()).placeholder(R.drawable.no_image_found).into(imageView);
-//            //Set lại id để load dữ liệu từ HomeActivity qua
-//            txtTen.setText(user.getTen());
-//            txtGia.setText(user.getGia());
-//            txtMoTa.setText(user.getMota());
-//
-//        }
+
+
+
+
+
+        }
 
 
         btnSave.setOnClickListener(new View.OnClickListener() {

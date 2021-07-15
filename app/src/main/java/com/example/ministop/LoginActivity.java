@@ -5,11 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -88,8 +85,16 @@ public class LoginActivity extends AppCompatActivity {
                     {
                     //Duyet mang
                     for (NGUOIDUNG i : user) {
+                        if(txtusername.getText().toString().equals(i.sdt) && !txtpassword.getText().toString().equals(i.matkhau))
+                        {
+                            Toast.makeText(getApplicationContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+
                         if (txtusername.getText().toString().equals(i.sdt) && txtpassword.getText().toString().equals(i.matkhau)) {
                             Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            DEPRESS.USER = i;
                             SharedPreferences.Editor editor = luutru.edit();
                             if (chkSave.isChecked()) {
                                 //luu lai thong tin
@@ -99,19 +104,10 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putBoolean("saveinfo", chkSave.isChecked());
                             editor.commit();
                             Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
-                            intent1.putExtra("infoUser",user);
+
                             startActivity(intent1);
                         }
-                        if(txtusername.getText().toString().equals(i.sdt) && !txtpassword.getText().toString().equals(i.matkhau))
-                        {
-                            Toast.makeText(getApplicationContext(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        if(!txtusername.getText().toString().equals(i.sdt) && !txtpassword.getText().toString().equals(i.matkhau))
-                        {
-                            Toast.makeText(getApplicationContext(), "Bạn chưa đăng ký tài khoản", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+
 
 
                     }

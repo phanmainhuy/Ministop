@@ -3,6 +3,8 @@ package com.example.ministop;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     Button btnSaveRegist, btnCancel;
     EditText txtphone, txtpassword, txtrepass, txtemail, txtname, txtaddress;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
