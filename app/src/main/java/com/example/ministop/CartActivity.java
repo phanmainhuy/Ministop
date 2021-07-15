@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -39,6 +40,7 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                startActivity(new Intent(getApplicationContext(),HomeActivity.class));
             }
         });
 

@@ -65,9 +65,10 @@ public class UserActivity extends AppCompatActivity {
         if(DEPRESS.USER != null)
         {
             user = DEPRESS.USER;
-
             //load hình từ url
+
             Picasso.with(this).load(url + user.getHinhanh()).placeholder(R.drawable.no_image_found).into(avatarUser);
+
             tvNameAva.setText(user.getHoten());
             txtHoTen.setText(user.getHoten());
             txtSDT.setText(user.getSdt());
