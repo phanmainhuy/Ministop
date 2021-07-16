@@ -55,8 +55,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     //private static final String FRIST_TIME = "fist_time"; // nguoi dung select lan dau
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
 
-    //Y:192.168.22.102    //Ru:192.168.1.7
-    String ip = "192.168.1.7";
+
 
     RecyclerView recyclerView, recyclerView2;
 
@@ -67,8 +66,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     ProductsAdapter_Recycle productsAdapter_recycle;
 
     //Y: 192.168.22.102     //Ru: 192.168.1.7
-    String url = "http://" + ip +"/wsministop/getdanhmuc.php";
-    String url2 = "http://" + ip + "/wsministop/getsanpham.php";
+    String url = "http://" + DEPRESS.ip +"/wsministop/getdanhmuc.php";
+    String url2 = "http://" + DEPRESS.ip + "/wsministop/getsanpham.php";
 
     ViewFlipper viewFlipper;
     DrawerLayout drawerLayout;
@@ -168,7 +167,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     void loadViewFlipper() {
         // Y: 192.168.22.102    //Ru: 192.168.1.5
-        String urlslide = "http://" + ip + "/wsministop/slide/";
+        String urlslide = "http://" + DEPRESS.ip + "/wsministop/slide/";
         ArrayList<String> mangslide = new ArrayList<>();
 
         mangslide.add(urlslide + "1.jpg");

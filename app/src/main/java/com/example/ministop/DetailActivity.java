@@ -23,11 +23,10 @@ public class DetailActivity extends AppCompatActivity {
     ImageView imageView;
     TextView txtTen, txtGia, txtMoTa;
     Button btnAddCart;
-    Products products;
+    //Products products;
 
-    //Y:192.168.22.102  //Ru:192.168.1.7
-    String ip = "192.168.1.7";
-    String url = "http://" + ip + "/wsministop/sanpham/";
+
+    String url = "http://" + DEPRESS.ip + "/wsministop/sanpham/";
 
 
 
@@ -82,7 +81,7 @@ public class DetailActivity extends AppCompatActivity {
                     boolean exist = false;
                    for(int i =0; i < DEPRESS.carts.size(); i++)
                    {
-                       if(DEPRESS.carts.get(i).getIdsp() == DEPRESS.PRODUCT.getMa())
+                       if(DEPRESS.carts.get(i).getIdsp().equals(DEPRESS.PRODUCT.getMa()))//OK so sánh String phải dùng equal
                        {
                            DEPRESS.carts.get(i).setSoluong(DEPRESS.carts.get(i).getSoluong()+1);
                             exist =true;

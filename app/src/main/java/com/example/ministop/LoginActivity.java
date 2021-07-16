@@ -33,9 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences luutru;
     ArrayList<NGUOIDUNG> user = new ArrayList<>();
 
-    //Y:192.168.22.102    //Ru:192.168.1.7
-    String ip = "192.168.1.7";
-    String urlnguoidung = "http://" + ip + "/wsministop/getnguoidung.php";
+
+    String urlnguoidung = "http://" + DEPRESS.ip + "/wsministop/getnguoidung.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

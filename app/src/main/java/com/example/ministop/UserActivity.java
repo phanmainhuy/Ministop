@@ -25,9 +25,8 @@ public class UserActivity extends AppCompatActivity {
     TextView tvNameAva, txtHoTen, txtSDT, txtEmail, txtNgaySinh , txtDiaChi;
     RadioButton rdoNam, rdoNu;
 
-    //Y:192.168.22.102  //Ru:192.168.1.7
-    String ip = "192.168.1.7";
-    String url = "http://" + ip + "/wsministop/nguoidung/";
+
+    String url = "http://" + DEPRESS.ip + "/wsministop/nguoidung/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

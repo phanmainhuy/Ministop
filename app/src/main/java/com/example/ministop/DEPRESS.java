@@ -7,6 +7,9 @@ public class DEPRESS {
     public static ArrayList<CART> carts = new ArrayList<>();
     public static Products PRODUCT;
 
+    //Y:192.168.22.102  //Ru:192.168.1.7
+    public static String ip = "192.168.22.102";
+
 
 
 }
