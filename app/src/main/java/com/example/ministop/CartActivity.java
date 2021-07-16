@@ -13,7 +13,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -21,9 +33,11 @@ public class CartActivity extends AppCompatActivity {
 
     Button btnPay, btnContinue, btnAdd, btnMin;
     ListView lvCart;
-
-    TextView tvThanhtien, tvNull, tvSL;
+    ArrayList<Products> datasp = new ArrayList<>();
+    TextView tvThanhtien, tvNull, tvSL, tvGiasp;
     CartAdapterListView cartAdapter;
+
+    String url = "http://" + DEPRESS.ip + "/wsministop/getsanpham.php";
 
 
     @Override
@@ -49,20 +63,26 @@ public class CartActivity extends AppCompatActivity {
 //        btnMin = findViewById(R.id.btn_Cart_MinNumber);
         tvNull = findViewById(R.id.lbl_Cart_notificationcart);
         lvCart = findViewById(R.id.lst_Cart);
-        tvSL = findViewById(R.id.txt_Cart_soluong_1dong);
+        tvThanhtien = findViewById(R.id.tv_Cart_Total);
         cartAdapter = new CartAdapterListView(CartActivity.this, DEPRESS.carts);
         lvCart.setAdapter(cartAdapter);
 
+
+
+        //Kiem tra ListView
         checkData();
-        
+
+        //Load thanh tien
+        xuLyThanhTien();
+
+
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent1 = new Intent(getApplicationContext(),HomeActivity.class);
                 startActivity(intent1);
-                //startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+
             }
         });
 
@@ -77,6 +97,7 @@ public class CartActivity extends AppCompatActivity {
 
 
 
+
     }
 
     private void checkData() {
@@ -85,17 +106,19 @@ public class CartActivity extends AppCompatActivity {
             cartAdapter.notifyDataSetChanged();
             tvNull.setVisibility(View.VISIBLE);
             lvCart.setVisibility(View.INVISIBLE);
+
         }
         else
         {
             cartAdapter.notifyDataSetChanged();
             tvNull.setVisibility(View.INVISIBLE);
             lvCart.setVisibility(View.VISIBLE);
+
+
         }
-
-
-
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -107,4 +130,90 @@ public class CartActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-}
+
+    public void xuLyThanhTien() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        datasp.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("gia"),jsonObject.getString("hinhanh"),jsonObject.getString("mota")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                //Xu ly text view Total
+                if(DEPRESS.carts.size() <=0)
+                {
+                    tvThanhtien.setText(0+"");
+                }
+                else
+                {
+                    int Tongtien = 0;
+                    for (CART i : DEPRESS.carts)
+                    {
+                        for (Products sp : datasp)
+                        {
+                            if(i.idsp.equals(sp.ma))
+                            {
+                                int giasp = Integer.parseInt(sp.gia);
+                                int soluongsp = i.soluong;
+                                Tongtien += giasp * soluongsp;
+                                tvThanhtien.setText(Tongtien + "");
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        };
+
+        Response.ErrorListener thatbai = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
+
+
+//    private void xuLyThanhTien()
+//    {
+//        if(DEPRESS.carts.size() <=0)
+//        {
+//            tvThanhtien.setText(0+"");
+//        }
+//        else
+//        {
+//            int Tongtien = 0;
+//            for (CART i : DEPRESS.carts)
+//            {
+//                for (Products sp : datasp)
+//                {
+//                    if(i.idsp.equals(sp.ma))
+//                    {
+//                        int giasp = Integer.parseInt(sp.gia);
+//                        int soluongsp = i.soluong;
+//                        Tongtien += giasp * soluongsp;
+//                        tvThanhtien.setText(Tongtien + "");
+//                    }
+//                }
+//
+//            }
+//        }
+
+    }
+
+
+
+
+
+
+
