@@ -20,7 +20,7 @@ public class CartAdapterListView extends BaseAdapter {
     Context context;
     ArrayList<CART> carts;
     //Y:192.168.22.102  //Ru:192.168.1.7
-    String ip = "192.168.22.102";
+    String ip = "192.168.1.7";
     String url = "http://" + ip + "/wsministop/sanpham/";
 
     public CartAdapterListView(Context context, ArrayList<CART> carts)

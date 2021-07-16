@@ -7,10 +7,12 @@
             android:id="@+id/mnu_user"
             android:icon="@drawable/username"
             android:title="Thông tin người dùng" />
+
         <item
             android:id="@+id/mnu_cart"
             android:icon="@drawable/ic_baseline_shopping_cart_24"
             android:title="Giỏ hàng" />
+
         <item android:id="@+id/mnu_notification"
             android:icon="@drawable/ic_baseline_notifications_24"
             android:title="Thông báo"

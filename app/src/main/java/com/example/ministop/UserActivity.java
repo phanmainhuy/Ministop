@@ -26,7 +26,7 @@ public class UserActivity extends AppCompatActivity {
     RadioButton rdoNam, rdoNu;
 
     //Y:192.168.22.102  //Ru:192.168.1.7
-    String ip = "192.168.22.102";
+    String ip = "192.168.1.7";
     String url = "http://" + ip + "/wsministop/nguoidung/";
 
     @Override
@@ -75,12 +75,6 @@ public class UserActivity extends AppCompatActivity {
             txtEmail.setText(user.getEmail());
             txtNgaySinh.setText(user.getNgaysinh());
             txtDiaChi.setText(user.getDiachi());
-
-
-
-
-
-
 
         }
 

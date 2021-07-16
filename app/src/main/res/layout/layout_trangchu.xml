@@ -34,17 +34,17 @@
 
                     <ImageView
                         android:id="@+id/imageView_logo"
-                        android:layout_width="80dp"
+                        android:layout_width="70dp"
                         android:layout_height="50dp"
                         app:srcCompat="@drawable/logo"
                         />
                     <TextView
-                        android:layout_width="300dp"
+                        android:layout_width="250dp"
                         android:layout_height="match_parent"
-                        android:textSize="15dp"
+                        android:textSize="12dp"
                         android:textStyle="bold"
                         android:fontFamily="serif"
-                        android:text="Deliciousness, Friendly, Convenienece"
+                        android:text="Deliciousness - Friendly - Convenienece"
                         android:textColor="@color/blue_deep"
                         ></TextView>
                 </androidx.appcompat.widget.Toolbar>

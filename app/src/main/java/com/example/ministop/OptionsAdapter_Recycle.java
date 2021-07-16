@@ -19,14 +19,13 @@ public class OptionsAdapter_Recycle extends RecyclerView.Adapter<OptionsAdapter_
     ArrayList<Options> dulieu;
 
     //Y:192.168.22.102    //Ru:192.168.1.7
-    String ip = "192.168.22.102";
+    String ip = "192.168.1.7";
 
-    String url = "http://" + ip + "/wsministop/hinhanh/";
+    String url = "http://" + ip + "/wsministop/danhmuc/";
 
     public OptionsAdapter_Recycle(Context context, ArrayList<Options> dulieu) {
         this.context = context;
         this.dulieu = dulieu;
-
     }
 
     @NonNull

@@ -26,7 +26,6 @@ public class CartActivity extends AppCompatActivity {
     CartAdapterListView cartAdapter;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

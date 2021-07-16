@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     ArrayList<NGUOIDUNG> user = new ArrayList<>();
 
     //Y:192.168.22.102    //Ru:192.168.1.7
-    String ip = "192.168.22.102";
+    String ip = "192.168.1.7";
     String urlnguoidung = "http://" + ip + "/wsministop/getnguoidung.php";
 
     @Override

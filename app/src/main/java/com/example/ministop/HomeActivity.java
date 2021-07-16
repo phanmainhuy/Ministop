@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private boolean mUserSawDrawer = false; //neu nguoi dung mo thi sau do khong hien thi lai
 
     //Y:192.168.22.102    //Ru:192.168.1.7
-    String ip = "192.168.22.102";
+    String ip = "192.168.1.7";
 
     RecyclerView recyclerView, recyclerView2;
 
@@ -93,13 +93,22 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         viewFlipper = findViewById(R.id.viewflipper);
 
         drawerLayout = findViewById(R.id.drawerlayout);
+        //set navigation vao icon menu
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+
         navigationLeft = findViewById(R.id.nagivationviewLeft);
         //Xu ly Navigation Left
         //tao su kien click navigationLeft
         navigationLeft.setNavigationItemSelectedListener(this);
         //Xu ly khong lap Activity khi chon item Navigation
-        showDrawer();
+        //showDrawer();
 //        if(!didUserSeeDrawer()) //first time
 //        {
 //            showDrawer();
@@ -260,7 +269,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    private  void showDrawer()
+    /*private  void showDrawer()
     {
         drawerLayout.openDrawer(GravityCompat.START);
     }
@@ -268,7 +277,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private  void hideDrawer()
     {
         drawerLayout.closeDrawer(GravityCompat.START);
-    }
+    }*/
 
 
     //---------------------------------------------------------------------------//
@@ -313,9 +322,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 return false;
             }
         });
+
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_cart)
+        {
+            Intent intent = new Intent(this,CartActivity.class);
+            startActivity(intent);
+        }
+
+        return true;
+    }
     // -------------------------------------------------------------------------//
 
 //    private boolean didUserSeeDrawer()
