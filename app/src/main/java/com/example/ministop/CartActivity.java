@@ -148,7 +148,7 @@ public class CartActivity extends AppCompatActivity {
                 //Xu ly text view Total
                 if(DEPRESS.carts.size() <=0)
                 {
-                    tvThanhtien.setText(0+"");
+                    tvThanhtien.setText(0+"  VND");
                 }
                 else
                 {
@@ -162,7 +162,7 @@ public class CartActivity extends AppCompatActivity {
                                 int giasp = Integer.parseInt(sp.gia);
                                 int soluongsp = i.soluong;
                                 Tongtien += giasp * soluongsp;
-                                tvThanhtien.setText(Tongtien + "");
+                                tvThanhtien.setText(Tongtien + "  VND");
                             }
                         }
 
@@ -181,6 +181,45 @@ public class CartActivity extends AppCompatActivity {
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
+    }
+
+    public void handleAddCart_1dong(View view)
+    {
+        int Tongtien = 0;
+        TextView tvgiasp, tvsl1dong;
+        // anh xa
+        tvgiasp = findViewById(R.id.tv_Cart_giasp);
+        tvsl1dong = findViewById(R.id.txt_Cart_soluong_1dong);
+
+        int giasp = Integer.parseInt(tvgiasp.getText().toString());
+        int sl = Integer.parseInt(tvsl1dong.getText().toString()) + 1;
+        Tongtien = giasp * sl;
+        tvThanhtien.setText(Tongtien+"  VND");
+        tvsl1dong.setText(sl+"");
+    }
+    public void handleMinCart_1dong(View view)
+    {
+        int Tongtien = 0;
+        TextView tvgiasp, tvsl1dong;
+        // anh xa
+        tvgiasp = findViewById(R.id.tv_Cart_giasp);
+        tvsl1dong = findViewById(R.id.txt_Cart_soluong_1dong);
+
+        int giasp = Integer.parseInt(tvgiasp.getText().toString());
+        int sl = Integer.parseInt(tvsl1dong.getText().toString()) - 1;
+        if(sl <0)
+        {
+            sl = 0;
+            tvsl1dong.setText(sl+"");
+        }
+        else
+        {
+            Tongtien = giasp * sl;
+            tvThanhtien.setText(Tongtien+"  VND");
+            tvsl1dong.setText(sl+"");
+
+        }
+
     }
 
 
