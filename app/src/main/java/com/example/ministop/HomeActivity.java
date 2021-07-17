@@ -18,6 +18,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.PreferenceManager;
@@ -243,6 +244,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
 
             drawerLayout.closeDrawer(GravityCompat.START);
+        }
+        if(mSelectedId == R.id.mnu_contact)
+        {
+            intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:028 3510 6870"));
+            startActivity(intent);
         }
     }
 
