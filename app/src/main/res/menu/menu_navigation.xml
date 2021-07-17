@@ -22,9 +22,9 @@
             android:icon="@drawable/ic_baseline_message_24"
             android:title="Tin tức"/>
         <item
-            android:id="@+id/mnu_aboutus"
+            android:id="@+id/mnu_help"
             android:icon="@drawable/logo"
-            android:title="Về chúng tôi" />
+            android:title="Hỗ trợ" />
         <item
             android:id="@+id/mnu_contact"
             android:icon="@drawable/ic_baseline_contacts_24"

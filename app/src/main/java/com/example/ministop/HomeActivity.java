@@ -250,6 +250,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:028 3510 6870"));
             startActivity(intent);
         }
+        if(mSelectedId == R.id.mnu_help)
+        {
+            intent = new Intent(this,SupportChatActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override

@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ministop"
         android:usesCleartextTraffic="true">
-        <activity android:name=".LocationActivity"></activity>
+        <activity android:name=".SupportChatActivity"></activity>
+        <activity android:name=".LocationActivity" />
         <activity android:name=".SPTheoDanhMucActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".CartActivity" />
