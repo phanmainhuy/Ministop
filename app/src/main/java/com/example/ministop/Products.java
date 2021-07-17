@@ -10,14 +10,33 @@ public class Products implements Serializable {
     String gia;
     String hinh;
     String mota;
+    String madm;
 
-    public Products(String ma, String ten, String gia, String hinh, String mota) {
+    public Products(String ma, String ten, String gia, String hinh, String mota, String madm) {
         this.ma = ma;
         this.ten = ten;
         this.gia = gia;
         this.hinh = hinh;
         this.mota = mota;
+        this.madm = madm;
     }
+
+
+
+
+
+
+    public String getMadm() {
+        return madm;
+    }
+
+    public void setMadm(String madm) {
+        this.madm = madm;
+    }
+
+
+
+
 
     public String getMa() {
         return ma;

@@ -29,8 +29,6 @@ public class DetailActivity extends AppCompatActivity {
     String url = "http://" + DEPRESS.ip + "/wsministop/sanpham/";
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

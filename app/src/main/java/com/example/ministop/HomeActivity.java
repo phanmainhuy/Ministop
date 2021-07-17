@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigation(mSelectedId);
 
         //Load du lieu danh muc sp
-        optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu);
+        optionsAdapter_recycle = new OptionsAdapter_Recycle(this, dulieu, this);
         recyclerView.setAdapter(optionsAdapter_recycle);
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         LayDanhMucSP();
@@ -144,7 +144,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        data.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("gia"),jsonObject.getString("hinhanh"),jsonObject.getString("mota")));
+                        data.add(new Products(jsonObject.getString("idsanpham"), jsonObject.getString("tensanpham"), jsonObject.getString("gia"),jsonObject.getString("hinhanh"),jsonObject.getString("mota"), jsonObject.getString("iddanhmucsp")));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -238,6 +238,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             drawerLayout.closeDrawer(GravityCompat.START);
         }
+        if (mSelectedId == R.id.mnu_address) {
+            intent = new Intent(HomeActivity.this, LocationActivity.class);
+            startActivity(intent);
+
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
 
     @Override
@@ -279,7 +285,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }*/
 
 
-    //---------------------------------------------------------------------------//
+
     //---------------------Xu ly su kien click item san pham--------------------//
     // -------------------------------------------------------------------------//
 
@@ -290,13 +296,19 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
           DEPRESS.PRODUCT = products;
         startActivity(intent);
     }
-    //---------------------------------------------------------------------------//
-
-
-
 
 
     //---------------------------------------------------------------------------//
+    //---------------------Xu ly su kien click item danh muc sp--------------------//
+    @Override
+    public void ItemClick(Options options) {
+        Intent intent = new Intent(this, SPTheoDanhMucActivity.class);
+        DEPRESS.OPTIONdata = options; //null
+        startActivity(intent);
+    }
+
+    //---------------------------------------------------------------------------//
+
     //------------------------------Xu ly search view----------------------------//
     // -------------------------------------------------------------------------//
     @Override
