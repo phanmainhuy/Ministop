@@ -22,8 +22,8 @@ public class UserActivity extends AppCompatActivity {
     Button btnSave, btnLogout;
     NGUOIDUNG user;
     ImageView avatarUser;
-    TextView tvNameAva, txtHoTen, txtSDT, txtEmail, txtNgaySinh , txtDiaChi;
-    RadioButton rdoNam, rdoNu;
+    TextView tvNameAva, txtHoTen, txtSDT, txtEmail, txtNgaySinh , txtDiaChi, txtGioiTinh;
+
 
 
     String url = "http://" + DEPRESS.ip + "/wsministop/nguoidung/";
@@ -54,8 +54,7 @@ public class UserActivity extends AppCompatActivity {
         txtHoTen = findViewById(R.id.txt_User_Hoten);
         txtSDT = findViewById(R.id.txt_User_Phone);
         txtEmail = findViewById(R.id.txt_User_Email);
-        rdoNu = findViewById(R.id.rdb_User_Nu);
-        rdoNam = findViewById(R.id.rdb_User_Nam);
+        txtGioiTinh = findViewById(R.id.txt_User_GioiTinh);
         txtNgaySinh = findViewById(R.id.txt_User_Birthday);
         txtDiaChi = findViewById(R.id.txt_User_Address);
 
@@ -74,9 +73,9 @@ public class UserActivity extends AppCompatActivity {
             txtEmail.setText(user.getEmail());
             txtNgaySinh.setText(user.getNgaysinh());
             txtDiaChi.setText(user.getDiachi());
+            txtGioiTinh.setText(user.getGioitinh());
 
         }
-
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,15 +86,12 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
-
-
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getApplicationContext(), "Đăng xuất thành công", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(UserActivity.this, LoginActivity.class);
                 startActivity(intent);
-
             }
         });
     }
