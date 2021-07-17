@@ -129,11 +129,6 @@ public class CartAdapterListView extends BaseAdapter {
                         ((CartActivity)(context)).xuLyThanhTien();
                     }
 
-
-
-
-
-
                 }
             });
 

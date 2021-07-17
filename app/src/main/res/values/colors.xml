@@ -15,4 +15,5 @@
     <color name="light_lemon">#F3F3A8</color>
     <color name="red_basic">#FF0000</color>
     <color name= "red_price">#FF3030</color>
+    <color name="yellow_light">#FFFF99</color>
 </resources>
