@@ -34,6 +34,7 @@ public class SPTheoDanhMucActivity extends AppCompatActivity implements OnClickL
     RecyclerView rcl_sptheoloai;
     RecyclerView.Adapter adaptersp;
     TextView tvNull;
+    //lay id tu su kien Item click
     String id = DEPRESS.OPTIONdata.getMa();
     //String id = "1";
     String url = "http://" + DEPRESS.ip + "/wsministop/get1sanpham.php?id=" + id;

@@ -11,6 +11,7 @@ public class DEPRESS {
 
     //Y:192.168.22.102  //Ru:192.168.1.7
     public static String ip = "192.168.22.102";
+    public static int ThanhToan = 0;
 
 
 

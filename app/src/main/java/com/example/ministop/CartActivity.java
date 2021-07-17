@@ -92,6 +92,23 @@ public class CartActivity extends AppCompatActivity {
 
             }
         });
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(tvThanhtien.getText().toString().equals(0+"  VND"))
+                {
+                    btnPay.setVisibility(View.VISIBLE);
+                    Toast.makeText(getApplicationContext(), "Giỏ hàng bạn chưa có gì để thanh toán", Toast.LENGTH_SHORT).show();
+                }
+
+                else
+                {
+
+                    Intent intent1 = new Intent(getApplicationContext(),OrderActivity.class);
+                    startActivity(intent1);
+                }
+            }
+        });
 
 //        btnAdd.setOnClickListener(new View.OnClickListener() {
 //            @Override

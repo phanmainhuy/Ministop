@@ -108,11 +108,31 @@ public class CartAdapterListView extends BaseAdapter {
                     DEPRESS.carts.get(position).soluong++;
                     cart_qlty.setText(DEPRESS.carts.get(position).soluong + "");
                     ((CartActivity)(context)).xuLyThanhTien();
-                    //hmm
-                    // thu nha, coi chuwngf loi :((
-                    // OK phan so luong r
-                    // h chinh gia
-                    // K nen xai ViewHolder cho BaseAdapter, chi xai cho RecyclerView
+
+
+                }
+            });
+
+            btn_min.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int soluong;
+                    soluong = Integer.parseInt(cart_qlty.getText().toString());
+                    if(soluong <= 1)
+                    {
+                        btn_min.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        DEPRESS.carts.get(position).soluong--;
+                        cart_qlty.setText(DEPRESS.carts.get(position).soluong + "");
+                        ((CartActivity)(context)).xuLyThanhTien();
+                    }
+
+
+
+
+
 
                 }
             });
