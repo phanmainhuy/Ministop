@@ -34,16 +34,23 @@ public class CartActivity extends AppCompatActivity {
     Button btnPay, btnContinue, btnAdd, btnMin;
     ListView lvCart;
     ArrayList<Products> datasp = new ArrayList<>();
-    TextView tvThanhtien, tvNull, tvSL, tvGiasp;
+    TextView  tvNull, tvSL, tvGiasp;
     CartAdapterListView cartAdapter;
+    public static TextView tvThanhtien;
 
     String url = "http://" + DEPRESS.ip + "/wsministop/getsanpham.php";
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+
         //Action Bar
         ActionBar actionBar = getSupportActionBar();
         //thanh tro ve home
@@ -146,6 +153,8 @@ public class CartActivity extends AppCompatActivity {
                     }
                 }
                 //Xu ly text view Total
+                // t co xai cai nay dau ma biet huhu
+                //th de doc debug
                 if(DEPRESS.carts.size() <=0)
                 {
                     tvThanhtien.setText(0+"  VND");
@@ -163,6 +172,10 @@ public class CartActivity extends AppCompatActivity {
                                 int soluongsp = i.soluong;
                                 Tongtien += giasp * soluongsp;
                                 tvThanhtien.setText(Tongtien + "  VND");
+                                // hai vong for thif nho break
+                                // ok chua
+                                break;
+//                                cái dao diện cart đâu
                             }
                         }
 

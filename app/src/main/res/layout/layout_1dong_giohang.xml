@@ -78,7 +78,6 @@
         android:layout_marginTop="2dp"
         android:backgroundTint="@color/white"
         android:gravity="top|center"
-        android:onClick="handleAddCart_1dong"
         android:layout_marginLeft="20dp"
         android:padding="0dp"
         android:paddingTop="0dp"
@@ -96,7 +95,7 @@
         android:layout_marginTop="2dp"
         android:backgroundTint="@color/white"
         android:gravity="top|center"
-        android:onClick="handleMinCart_1dong"
+
         android:padding="0dp"
         android:background="@null"
         android:paddingTop="0dp"

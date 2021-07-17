@@ -43,54 +43,113 @@ public class CartAdapterListView extends BaseAdapter {
         return position;
     }
 
-    public class ViewHolderListCart
-    {
-        public TextView tvTenspCart, tvGiaspCart, tvSLspCart;
-        Button btnAdd, btnMin;
-        ImageView imgspCart;
-    }
+//    public class ViewHolderListCart
+//    {
+//        public TextView tvTenspCart, tvGiaspCart, tvSLspCart;
+//        Button btnAdd, btnMin;
+//        ImageView imgspCart;
+//    }
 
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
-        ViewHolderListCart viewHolderListCart = null;
-        if(view == null)
+    public View getView(int position, View convertview, ViewGroup parent) {
+//        ViewHolderListCart viewHolderListCart = null;
+//        if(view == null)
+//        {
+//            viewHolderListCart = new ViewHolderListCart();
+//            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//            view = inflater.inflate(R.layout.layout_1dong_giohang, null);
+//            // anh xa
+//            viewHolderListCart.tvTenspCart = (TextView)view.findViewById(R.id.tv_Cart_tensp);
+//            viewHolderListCart.tvGiaspCart = (TextView)view.findViewById(R.id.tv_Cart_giasp);
+//            viewHolderListCart.tvSLspCart = (TextView)view.findViewById(R.id.txt_Cart_soluong_1dong);
+//            viewHolderListCart.imgspCart = (ImageView)view.findViewById(R.id.img_Cart_hinhsp);
+//            viewHolderListCart.btnAdd = (Button)view.findViewById(R.id.btn_Cart_AddNumber);
+//            viewHolderListCart.btnMin = (Button)view.findViewById(R.id.btn_Cart_MinNumber);
+//            view.setTag(viewHolderListCart);
+//        }
+//        else
+//        {
+//            viewHolderListCart = (ViewHolderListCart) view.getTag();
+//        }
+
+        if(convertview == null)
         {
-            viewHolderListCart = new ViewHolderListCart();
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.layout_1dong_giohang, null);
-            // anh xa
-            viewHolderListCart.tvTenspCart = (TextView)view.findViewById(R.id.tv_Cart_tensp);
-            viewHolderListCart.tvGiaspCart = (TextView)view.findViewById(R.id.tv_Cart_giasp);
-            viewHolderListCart.tvSLspCart = (TextView)view.findViewById(R.id.txt_Cart_soluong_1dong);
-            viewHolderListCart.imgspCart = (ImageView)view.findViewById(R.id.img_Cart_hinhsp);
-            viewHolderListCart.btnAdd = (Button)view.findViewById(R.id.btn_Cart_AddNumber);
-            viewHolderListCart.btnMin = (Button)view.findViewById(R.id.btn_Cart_MinNumber);
-            view.setTag(viewHolderListCart);
+            convertview = LayoutInflater.from(context).inflate(R.layout.layout_1dong_giohang, null);
+            // gen
+            ImageView cart_img;
+            TextView cart_name, cart_cost, cart_qlty;
+            Button btn_add, btn_min;
+
+            // mapping
+
+            cart_img = convertview.findViewById(R.id.img_Cart_hinhsp);
+            cart_name = convertview.findViewById(R.id.tv_Cart_tensp);
+            cart_cost = convertview.findViewById(R.id.tv_Cart_giasp);
+            cart_qlty = convertview.findViewById(R.id.txt_Cart_soluong_1dong);
+            btn_add = convertview.findViewById(R.id.btn_Cart_AddNumber);
+            btn_min = convertview.findViewById(R.id.btn_Cart_MinNumber);
+
+            //hooking
+            CART cart = (CART)getItem(position);
+
+            cart_name.setText(cart.getTensp());
+            cart_cost.setText(cart.getGiasp());
+
+            Picasso.with(context)
+                    .load(url + cart.getHinhsp())
+                    .placeholder(R.drawable.no_image_found)
+                    .into(cart_img);
+            cart_qlty.setText(cart.getSoluong() + "");
+
+            btn_add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    DEPRESS.carts.get(position).soluong++;
+                    cart_qlty.setText(DEPRESS.carts.get(position).soluong + "");
+                    ((CartActivity)(context)).xuLyThanhTien();
+                    //hmm
+                    // thu nha, coi chuwngf loi :((
+                    // OK phan so luong r
+                    // h chinh gia
+                    // K nen xai ViewHolder cho BaseAdapter, chi xai cho RecyclerView
+
+                }
+            });
+
         }
-        else
-        {
-            viewHolderListCart = (ViewHolderListCart) view.getTag();
-        }
-        CART cart = (CART)getItem(position);
-        viewHolderListCart.tvTenspCart.setText(cart.getTensp());
+
+
+
+//        viewHolderListCart.tvTenspCart.setText(cart.getTensp());
 //        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 //        viewHolderListCart.tvGiaspCart.setText(decimalFormat.format(cart.getGiasp()));
-        viewHolderListCart.tvGiaspCart.setText(cart.getGiasp());
+//        viewHolderListCart.tvGiaspCart.setText(cart.getGiasp());
 
         //load anh
-        Picasso.with(context)
-                .load(url + cart.getHinhsp())
-                .placeholder(R.drawable.no_image_found)
-                .into(viewHolderListCart.imgspCart);
+
 
         //Them "" de chuyen ve kieu String
-        viewHolderListCart.tvSLspCart.setText(cart.getSoluong() + "");
+//        viewHolderListCart.tvSLspCart.setText(cart.getSoluong() + "");
+
+//        int sl = Integer.parseInt(viewHolderListCart.tvSLspCart.getText().toString());
+
+//        viewHolderListCart.btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                DEPRESS.carts.get(position).soluong++;
+//                viewHolderListCart.tvSLspCart.setText(DEPRESS.carts.get(position).soluong + "");
+//                // chờ xíu
+//                //cái nút tăng giảm số lượng đâu, từ, nãy t mới debug ra :v
+//                // t nghĩ là m dùng BaseAdapter thì k cần dùng VH
+//
+//            }
+//        });
 
 
-        return view;
+        return convertview;
     }
-
 
 
 }
