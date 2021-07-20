@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class UserActivity extends AppCompatActivity {
     Button btnSave, btnLogout;
     NGUOIDUNG user;
@@ -89,6 +91,7 @@ public class UserActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DEPRESS.carts = new ArrayList<>();
                 Toast.makeText(getApplicationContext(), "Đăng xuất thành công", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(UserActivity.this, LoginActivity.class);
                 startActivity(intent);
