@@ -106,4 +106,17 @@
         app:layout_constraintStart_toEndOf="@+id/txt_Cart_soluong_1dong"
         app:layout_constraintTop_toBottomOf="@+id/tv_Cart_giasp" />
 
+    <Button
+        android:id="@+id/btn_Cart_Xoa1dong"
+        android:layout_width="79dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/red_basic"
+        android:text="Xóa"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_Cart_tensp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

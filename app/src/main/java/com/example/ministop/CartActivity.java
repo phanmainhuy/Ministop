@@ -2,14 +2,17 @@ package com.example.ministop;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -82,6 +85,8 @@ public class CartActivity extends AppCompatActivity {
         //Load thanh tien
         xuLyThanhTien();
 
+        //Giu item thi xoa sp
+        catchOnItemListView();
 
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +108,6 @@ public class CartActivity extends AppCompatActivity {
 
                 else
                 {
-
                     Intent intent1 = new Intent(getApplicationContext(),OrderActivity.class);
                     startActivity(intent1);
                 }
@@ -119,6 +123,50 @@ public class CartActivity extends AppCompatActivity {
 
 
 
+
+
+
+    }
+
+    private void catchOnItemListView() {
+        lvCart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+                builder.setTitle("Thông báo");
+                builder.setMessage("Bạn có muốn xóa sản phẩm khỏi giỏ hàng");
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(DEPRESS.carts.size()<=0)
+                        {
+                            tvNull.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            DEPRESS.carts.remove(position);
+                            cartAdapter.notifyDataSetChanged();
+                            xuLyThanhTien();
+                            if(DEPRESS.carts.size()<=0)
+                            {
+                                tvNull.setVisibility(View.VISIBLE);
+                                cartAdapter.notifyDataSetChanged();
+                                xuLyThanhTien();
+                            }
+                        }
+                    }
+                });
+                builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cartAdapter.notifyDataSetChanged();
+                        xuLyThanhTien();
+                    }
+                });
+                builder.show();
+                return true;
+            }
+        });
 
 
 

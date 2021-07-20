@@ -43,35 +43,10 @@ public class CartAdapterListView extends BaseAdapter {
         return position;
     }
 
-//    public class ViewHolderListCart
-//    {
-//        public TextView tvTenspCart, tvGiaspCart, tvSLspCart;
-//        Button btnAdd, btnMin;
-//        ImageView imgspCart;
-//    }
 
 
     @Override
     public View getView(int position, View convertview, ViewGroup parent) {
-//        ViewHolderListCart viewHolderListCart = null;
-//        if(view == null)
-//        {
-//            viewHolderListCart = new ViewHolderListCart();
-//            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            view = inflater.inflate(R.layout.layout_1dong_giohang, null);
-//            // anh xa
-//            viewHolderListCart.tvTenspCart = (TextView)view.findViewById(R.id.tv_Cart_tensp);
-//            viewHolderListCart.tvGiaspCart = (TextView)view.findViewById(R.id.tv_Cart_giasp);
-//            viewHolderListCart.tvSLspCart = (TextView)view.findViewById(R.id.txt_Cart_soluong_1dong);
-//            viewHolderListCart.imgspCart = (ImageView)view.findViewById(R.id.img_Cart_hinhsp);
-//            viewHolderListCart.btnAdd = (Button)view.findViewById(R.id.btn_Cart_AddNumber);
-//            viewHolderListCart.btnMin = (Button)view.findViewById(R.id.btn_Cart_MinNumber);
-//            view.setTag(viewHolderListCart);
-//        }
-//        else
-//        {
-//            viewHolderListCart = (ViewHolderListCart) view.getTag();
-//        }
 
         if(convertview == null)
         {
@@ -79,7 +54,7 @@ public class CartAdapterListView extends BaseAdapter {
             // gen
             ImageView cart_img;
             TextView cart_name, cart_cost, cart_qlty;
-            Button btn_add, btn_min;
+            Button btn_add, btn_min, btn_delete;
 
             // mapping
 
@@ -89,6 +64,7 @@ public class CartAdapterListView extends BaseAdapter {
             cart_qlty = convertview.findViewById(R.id.txt_Cart_soluong_1dong);
             btn_add = convertview.findViewById(R.id.btn_Cart_AddNumber);
             btn_min = convertview.findViewById(R.id.btn_Cart_MinNumber);
+            btn_delete = convertview.findViewById(R.id.btn_Cart_Xoa1dong);
 
             //hooking
             CART cart = (CART)getItem(position);
@@ -113,14 +89,53 @@ public class CartAdapterListView extends BaseAdapter {
                 }
             });
 
+            btn_delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(DEPRESS.carts.size()<=0)
+                    {
+                        ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        DEPRESS.carts.remove(position);
+                        ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+                        ((CartActivity)(context)).xuLyThanhTien();
+                        if(DEPRESS.carts.size()<=0)
+                        {
+                            ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+                            ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+                            ((CartActivity)(context)).xuLyThanhTien();
+                        }
+                    }
+                }
+            });
+
+
             btn_min.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int soluong;
                     soluong = Integer.parseInt(cart_qlty.getText().toString());
-                    if(soluong <= 1)
+                    if(soluong == 1)
                     {
-                        btn_min.setVisibility(View.VISIBLE);
+                        //btn_min.setVisibility(View.VISIBLE);
+                        if(DEPRESS.carts.size()<=0)
+                        {
+                            ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+                        }
+                        else
+                        {
+                            DEPRESS.carts.remove(position);
+                            ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+                            ((CartActivity)(context)).xuLyThanhTien();
+                            if(DEPRESS.carts.size()<=0)
+                            {
+                                ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+                                ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+                                ((CartActivity)(context)).xuLyThanhTien();
+                            }
+                        }
                     }
                     else
                     {
