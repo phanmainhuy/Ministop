@@ -39,12 +39,14 @@
                         app:srcCompat="@drawable/logo"
                         />
                     <TextView
+                        android:id="@+id/icon_toolbar_home"
                         android:layout_width="250dp"
                         android:layout_height="match_parent"
                         android:textSize="12dp"
+                        android:layout_marginLeft="20dp"
                         android:textStyle="bold"
                         android:fontFamily="serif"
-                        android:text="Deliciousness - Friendly - Convenienece"
+                        android:text="Deliciously - Friendly - Conveniently"
                         android:textColor="@color/blue_deep"
                         ></TextView>
                 </androidx.appcompat.widget.Toolbar>

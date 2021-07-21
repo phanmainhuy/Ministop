@@ -6,30 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".Order_SuccessfulActivity"
     android:background="@color/yellow"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:gravity="center"
             >
             <ImageView
                 android:id="@+id/imgLogo"
                 android:layout_width="200dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
+                android:background="@color/yellow"
                 app:srcCompat="@drawable/logo" />
-            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:background="@color/yellow"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:text="Deliciously - Friendly - Conveniently"
+
+                />
         </LinearLayout>
 
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:textColor="@color/blue"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:background="@color/yellow"
+                android:textSize="22dp"
+                android:text="Quý khách đã đặt hàng thành công"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/blue"
+                android:textSize="21dp"
+                android:gravity="center"
+                android:text="Ministop sẽ duyệt đơn hàng và vận chuyển đến quý khách nhanh nhất có thể"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:id="@+id/imgshipping"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    app:srcCompat="@drawable/shipping" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+
     </LinearLayout>
-
-
-
-
 </LinearLayout>

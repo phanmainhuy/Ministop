@@ -8,9 +8,12 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -28,7 +31,9 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin, btnDangky;
+    ImageView imgLogo;
     CheckBox chkSave;
+    Animation animation;
     EditText txtusername, txtpassword;
     SharedPreferences luutru;
     ArrayList<NGUOIDUNG> user = new ArrayList<>();
@@ -57,6 +62,12 @@ public class LoginActivity extends AppCompatActivity {
         chkSave = findViewById(R.id.chkSave);
         btnLogin = findViewById(R.id.btnLogin);
         btnDangky = findViewById(R.id.btnRegister);
+        imgLogo = findViewById(R.id.imageView);
+
+        //tao anmiation cho logo
+        animation = AnimationUtils.loadAnimation(this, R.anim.combine_logo);
+        imgLogo.startAnimation(animation);
+
 
         LaydulieuDangNhap();
         luutru = getSharedPreferences("data", MODE_PRIVATE);
@@ -103,7 +114,6 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putBoolean("saveinfo", chkSave.isChecked());
                             editor.commit();
                             Intent intent1 = new Intent(LoginActivity.this, HomeActivity.class);
-
                             startActivity(intent1);
                         }
 
