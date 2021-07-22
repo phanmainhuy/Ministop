@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class SPDMAdapter extends RecyclerView.Adapter<SPDMAdapter.KHUNGNHIN> {
@@ -47,7 +48,7 @@ public class SPDMAdapter extends RecyclerView.Adapter<SPDMAdapter.KHUNGNHIN> {
                 .placeholder(R.drawable.no_image_found)
                 .into(holder.hinh);
 
-        holder.gia.setText(products.gia + " ");
+        holder.gia.setText(formatNumberCurrency(products.gia) + " đồng");
 
         holder.options = dulieu.get(position);
     }
@@ -78,5 +79,12 @@ public class SPDMAdapter extends RecyclerView.Adapter<SPDMAdapter.KHUNGNHIN> {
             });
         }
 
+    }
+
+    //Tạo format tiền VND
+    public static String formatNumberCurrency(String gia)
+    {
+        DecimalFormat format = new DecimalFormat("#,###");
+        return format.format(Double.parseDouble(gia));
     }
 }

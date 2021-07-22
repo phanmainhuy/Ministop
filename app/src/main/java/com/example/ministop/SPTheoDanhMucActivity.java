@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -149,7 +150,18 @@ public class SPTheoDanhMucActivity extends AppCompatActivity implements OnClickL
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_cart:
+                Intent intent = new Intent(this,CartActivity.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_cart,menu);
+        return true;
+
     }
 }

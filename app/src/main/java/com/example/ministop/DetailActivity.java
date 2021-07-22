@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
     String url = "http://" + DEPRESS.ip + "/wsministop/sanpham/";
+    private MenuItem item;
 
 
     @Override
@@ -63,12 +65,9 @@ public class DetailActivity extends AppCompatActivity {
             Picasso.with(this).load(url + DEPRESS.PRODUCT.getHinh()).placeholder(R.drawable.no_image_found).into(imageView);
             //Set lại id để load dữ liệu từ HomeActivity qua
             txtTen.setText(DEPRESS.PRODUCT.getTen());
-            txtGia.setText(DEPRESS.PRODUCT.getGia());
+            txtGia.setText(formatNumberCurrency(DEPRESS.PRODUCT.getGia()));
             txtMoTa.setText(DEPRESS.PRODUCT.getMota());
         }
-
-
-
 
         btnAddCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,8 +108,28 @@ public class DetailActivity extends AppCompatActivity {
             case android.R.id.home:
                 this.finish();
                 return true;
+            case R.id.action_cart:
+                Intent intent = new Intent(this,CartActivity.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //Tạo format tiền VND
+    public static String formatNumberCurrency(String gia)
+    {
+        DecimalFormat format = new DecimalFormat("#,###");
+        return format.format(Double.parseDouble(gia));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_cart,menu);
+            return true;
+
+    }
+
+
 
 }

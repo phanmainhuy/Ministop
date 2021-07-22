@@ -32,7 +32,7 @@
         <item
             android:id="@+id/mnu_address"
             android:icon="@drawable/ic_location"
-            android:title="Địa chỉ" />
+            android:title="Chi nhánh gần nhất" />
     </group>
 
 </menu>

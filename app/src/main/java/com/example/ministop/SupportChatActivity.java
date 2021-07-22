@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -22,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SupportChatActivity extends AppCompatActivity {
     RecyclerView chatsRV;
     EditText userMsgEdit;
+    TextView textView;
     FloatingActionButton sendMsgFAB;
     final  String BOT_KEY = "bot";
     final  String USER_KEY = "user";
@@ -37,6 +39,7 @@ public class SupportChatActivity extends AppCompatActivity {
         chatsRV = findViewById(R.id.idRVChats);
         userMsgEdit = findViewById(R.id.idEditMessage);
         sendMsgFAB = findViewById(R.id.idFABSend);
+        textView = findViewById(R.id.tv_BotChao);
 
         chatsModelsArrayList = new ArrayList<>();
         chatAdapter_recycleView = new ChatAdapter_RecycleView(chatsModelsArrayList,this);
@@ -52,8 +55,10 @@ public class SupportChatActivity extends AppCompatActivity {
                     Toast.makeText(SupportChatActivity.this, "Please enter your message", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                textView.setVisibility(View.GONE);
                 getRespone(userMsgEdit.getText().toString());
                 userMsgEdit.setText("");
+
             }
         });
     }

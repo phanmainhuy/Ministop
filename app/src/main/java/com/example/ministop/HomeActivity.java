@@ -89,7 +89,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ani = AnimationUtils.loadAnimation(this, R.anim.rotate_logo_home);
         icon.startAnimation(ani);
 
-
         drawerLayout = findViewById(R.id.drawerlayout);
         //set navigation vao icon menu
         toolbar = findViewById(R.id.toolbar);
@@ -323,6 +322,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search,menu);
+        getMenuInflater().inflate(R.menu.menu_cart,menu);
 
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();

@@ -42,4 +42,14 @@
             ></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_BotChao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="Chào bạn! Đây là chatbox tự động hỗ trợ của Ministop."
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        />
 </RelativeLayout>
