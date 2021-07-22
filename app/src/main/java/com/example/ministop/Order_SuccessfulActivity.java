@@ -26,18 +26,18 @@ public class Order_SuccessfulActivity extends AppCompatActivity {
         //Action Bar
         ActionBar actionBar = getSupportActionBar();
         //thanh tro ve home
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(false);
         //doi mau thanh action bar
         ColorDrawable colorDrawable
                 = new ColorDrawable(Color.parseColor("#003894"));
         // Set BackgroundDrawable
         actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle("Đặt hàng"); //Thiết lập tiêu đề
+        actionBar.setTitle("Đặt hàng thành công"); //Thiết lập tiêu đề
 
         //anh xa
         imgLogo = findViewById(R.id.imgLogo);
         imgshipping = findViewById(R.id.imgshipping);
-        btnHome = findViewById(R.id.btn_ordersuccess);
+        btnHome = findViewById(R.id.btnReturn_order_success);
 
         //ap dung animation
         anilogo = AnimationUtils.loadAnimation(this, R.anim.combine_logo);
