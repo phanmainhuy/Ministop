@@ -91,12 +91,12 @@
                 android:orientation="vertical">
 
                 <Button
+                    android:id="@+id/btn_ordersuccess"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:text="Trở về trang chủ"
                     android:drawableLeft="@drawable/ic_back"
-                    android:textColor="@color/white"
-                    />
+                    android:text="Trở về trang chủ"
+                    android:textColor="@color/white" />
 
             </LinearLayout>
 

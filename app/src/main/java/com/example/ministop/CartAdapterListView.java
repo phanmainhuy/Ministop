@@ -9,11 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class CartAdapterListView extends BaseAdapter {
@@ -57,7 +54,6 @@ public class CartAdapterListView extends BaseAdapter {
             Button btn_add, btn_min, btn_delete;
 
             // mapping
-
             cart_img = convertview.findViewById(R.id.img_Cart_hinhsp);
             cart_name = convertview.findViewById(R.id.tv_Cart_tensp);
             cart_cost = convertview.findViewById(R.id.tv_Cart_giasp);

@@ -34,10 +34,10 @@ import java.util.ArrayList;
 
 public class CartActivity extends AppCompatActivity {
 
-    Button btnPay, btnContinue, btnAdd, btnMin;
+    Button btnPay, btnContinue;
     ListView lvCart;
     ArrayList<Products> datasp = new ArrayList<>();
-    TextView  tvNull, tvSL, tvGiasp;
+    TextView  tvNull;
     CartAdapterListView cartAdapter;
     public static TextView tvThanhtien;
 
@@ -85,8 +85,7 @@ public class CartActivity extends AppCompatActivity {
         //Load thanh tien
         xuLyThanhTien();
 
-        //Giu item thi xoa sp
-        catchOnItemListView();
+
 
 
         btnContinue.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +107,7 @@ public class CartActivity extends AppCompatActivity {
 
                 else
                 {
+
                     Intent intent1 = new Intent(getApplicationContext(),OrderActivity.class);
                     startActivity(intent1);
                 }
@@ -128,49 +128,46 @@ public class CartActivity extends AppCompatActivity {
 
     }
 
-    private void catchOnItemListView() {
-        lvCart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
-                builder.setTitle("Thông báo");
-                builder.setMessage("Bạn có muốn xóa sản phẩm khỏi giỏ hàng");
-                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(DEPRESS.carts.size()<=0)
-                        {
-                            tvNull.setVisibility(View.VISIBLE);
-                        }
-                        else
-                        {
-                            DEPRESS.carts.remove(position);
-                            cartAdapter.notifyDataSetChanged();
-                            xuLyThanhTien();
-                            if(DEPRESS.carts.size()<=0)
-                            {
-                                tvNull.setVisibility(View.VISIBLE);
-                                cartAdapter.notifyDataSetChanged();
-                                xuLyThanhTien();
-                            }
-                        }
-                    }
-                });
-                builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        cartAdapter.notifyDataSetChanged();
-                        xuLyThanhTien();
-                    }
-                });
-                builder.show();
-                return true;
-            }
-        });
-
-
-
-    }
+//    private void catchOnItemListView() {
+//        lvCart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+//                builder.setTitle("Thông báo");
+//                builder.setMessage("Bạn có muốn xóa sản phẩm khỏi giỏ hàng");
+//                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        if(DEPRESS.carts.size()<=0)
+//                        {
+//                            tvNull.setVisibility(View.VISIBLE);
+//                        }
+//                        else
+//                        {
+//                            DEPRESS.carts.remove(position);
+//                            cartAdapter.notifyDataSetChanged();
+//                            xuLyThanhTien();
+//                            if(DEPRESS.carts.size()<=0)
+//                            {
+//                                tvNull.setVisibility(View.VISIBLE);
+//                                cartAdapter.notifyDataSetChanged();
+//                                xuLyThanhTien();
+//                            }
+//                        }
+//                    }
+//                });
+//                builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        cartAdapter.notifyDataSetChanged();
+//                        xuLyThanhTien();
+//                    }
+//                });
+//                builder.show();
+//                return true;
+//            }
+//        });
+//    }
 
     private void checkData() {
         if(DEPRESS.carts.size() <=0)
@@ -237,10 +234,11 @@ public class CartActivity extends AppCompatActivity {
                                 int soluongsp = i.soluong;
                                 Tongtien += giasp * soluongsp;
                                 tvThanhtien.setText(Tongtien + "  VND");
-                                // hai vong for thif nho break
+                                DEPRESS.ThanhToan = Tongtien;
+                                // hai vong for thi nho break
                                 // ok chua
                                 break;
-//                                cái dao diện cart đâu
+
                             }
                         }
 
@@ -261,44 +259,44 @@ public class CartActivity extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public void handleAddCart_1dong(View view)
-    {
-        int Tongtien = 0;
-        TextView tvgiasp, tvsl1dong;
-        // anh xa
-        tvgiasp = findViewById(R.id.tv_Cart_giasp);
-        tvsl1dong = findViewById(R.id.txt_Cart_soluong_1dong);
-
-        int giasp = Integer.parseInt(tvgiasp.getText().toString());
-        int sl = Integer.parseInt(tvsl1dong.getText().toString()) + 1;
-        Tongtien = giasp * sl;
-        tvThanhtien.setText(Tongtien+"  VND");
-        tvsl1dong.setText(sl+"");
-    }
-    public void handleMinCart_1dong(View view)
-    {
-        int Tongtien = 0;
-        TextView tvgiasp, tvsl1dong;
-        // anh xa
-        tvgiasp = findViewById(R.id.tv_Cart_giasp);
-        tvsl1dong = findViewById(R.id.txt_Cart_soluong_1dong);
-
-        int giasp = Integer.parseInt(tvgiasp.getText().toString());
-        int sl = Integer.parseInt(tvsl1dong.getText().toString()) - 1;
-        if(sl <0)
-        {
-            sl = 0;
-            tvsl1dong.setText(sl+"");
-        }
-        else
-        {
-            Tongtien = giasp * sl;
-            tvThanhtien.setText(Tongtien+"  VND");
-            tvsl1dong.setText(sl+"");
-
-        }
-
-    }
+//    public void handleAddCart_1dong(View view)
+//    {
+//        int Tongtien = 0;
+//        TextView tvgiasp, tvsl1dong;
+//        // anh xa
+//        tvgiasp = findViewById(R.id.tv_Cart_giasp);
+//        tvsl1dong = findViewById(R.id.txt_Cart_soluong_1dong);
+//
+//        int giasp = Integer.parseInt(tvgiasp.getText().toString());
+//        int sl = Integer.parseInt(tvsl1dong.getText().toString()) + 1;
+//        Tongtien = giasp * sl;
+//        tvThanhtien.setText(Tongtien+"  VND");
+//        tvsl1dong.setText(sl+"");
+//    }
+//    public void handleMinCart_1dong(View view)
+//    {
+//        int Tongtien = 0;
+//        TextView tvgiasp, tvsl1dong;
+//        // anh xa
+//        tvgiasp = findViewById(R.id.tv_Cart_giasp);
+//        tvsl1dong = findViewById(R.id.txt_Cart_soluong_1dong);
+//
+//        int giasp = Integer.parseInt(tvgiasp.getText().toString());
+//        int sl = Integer.parseInt(tvsl1dong.getText().toString()) - 1;
+//        if(sl <0)
+//        {
+//            sl = 0;
+//            tvsl1dong.setText(sl+"");
+//        }
+//        else
+//        {
+//            Tongtien = giasp * sl;
+//            tvThanhtien.setText(Tongtien+"  VND");
+//            tvsl1dong.setText(sl+"");
+//
+//        }
+//
+//    }
 
 
 //    private void xuLyThanhTien()

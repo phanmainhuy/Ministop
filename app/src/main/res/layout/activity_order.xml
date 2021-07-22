@@ -23,7 +23,7 @@
             app:srcCompat="@drawable/ic_location" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/lbl_order_ten"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -33,7 +33,7 @@
             android:textSize="20dp"
             />
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/lbl_order_sdt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -57,17 +57,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_baseline_house_24" />
+
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/lbl_order_diachi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/hint_txt"
-            android:textStyle="bold"
-            android:layout_marginTop="3dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="3dp"
             android:text="Địa chỉ nhà"
+            android:textColor="@color/blue"
             android:textSize="20dp"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -111,14 +111,14 @@
             android:text="Mã giảm giá"
             android:textStyle="bold"
             />
+
         <Spinner
-            android:layout_marginTop="5dp"
+            android:id="@+id/cbo_order_magiamgia"
             android:layout_width="200dp"
-            android:layout_marginLeft="30dp"
             android:layout_height="20dp"
-            android:background="@color/white"
-            >
-        </Spinner>
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white"></Spinner>
         
         
     </LinearLayout>
@@ -146,33 +146,38 @@
                 android:text="Số tiền giảm: "
                 android:textColor="@color/black"
                 android:textSize="15dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="-13000 VND"
-                android:paddingLeft="15dp"
-                android:textColor="@color/red_basic"
-                android:textSize="15dp"/>
+
+                <TextView
+                    android:id="@+id/lbl_order_tiengiam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:text="-13000 VND"
+                    android:textColor="@color/red_basic"
+                    android:textSize="15dp" />
 
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Còn lại: "
+                    android:text="Tổng cộng: "
                     android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp" />
+
                 <TextView
+                    android:id="@+id/lbl_order_tongcong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"
-                    android:text="400000 VND"
+                    android:layout_marginLeft="10dp"
                     android:paddingLeft="20dp"
+                    android:text="400000 VND"
                     android:textColor="@color/red_basic"
-                    android:textSize="15dp"/>
+                    android:textSize="15dp" />
 
             </LinearLayout>
 
@@ -211,20 +216,20 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
+                android:text="Thành tiền: "
                 android:textColor="@color/red_basic"
-                android:text="Tổng tiền: "
-                />
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/lbl_order_thanhtien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textStyle="bold"
                 android:layout_marginLeft="50dp"
-                android:textColor="@color/red_basic"
                 android:text="400.000 VND"
-                />
+                android:textColor="@color/red_basic"
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
 

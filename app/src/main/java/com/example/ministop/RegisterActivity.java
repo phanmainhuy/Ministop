@@ -64,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
         btnSaveRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegisterActivity.this, error+"", Toast.LENGTH_SHORT);
+                        Toast.makeText(RegisterActivity.this, error + "", Toast.LENGTH_SHORT);
 
                     }
                 }){
@@ -96,6 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
                         //lay mang
                         Map<String, String> params = new HashMap<String, String>();
                         String sdt = txtphone.getText().toString();
+
                         String matkhau = txtpassword.getText().toString();
                         String email = txtemail.getText().toString();
                         String hoten = txtname.getText().toString();
@@ -116,15 +118,21 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 };
                     requestQueue.add(stringRequest);
-                Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
-                Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(intent1);
+//                Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
+//                Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
+//                startActivity(intent1);
             }
 
         });
 
 
-
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent2);
+            }
+        });
 
 
 
@@ -139,15 +147,15 @@ public class RegisterActivity extends AppCompatActivity {
 //        int id = view.getId();
 //        switch (id)
 //        {
-//            case  R.id.btnSaveRegister:
-
-//                else
-//                {
-//                    Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
-//                    Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
-//                    startActivity(intent1);
-//                    break;
-//                }
+////            case  R.id.btnSaveRegister:
+////
+////                else
+////                {
+////                    Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
+////                    Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
+////                    startActivity(intent1);
+////                    break;
+////                }
 //
 //            case  R.id.btnCancel:
 //                Intent intent2 = new Intent(RegisterActivity.this, LoginActivity.class);
