@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="Thanh toán bằng thẻ ngân hàng nội địa, ATM, chuyển khoản, ..."
-        android:textColor="@color/hint_txt"
+        android:textColor="@color/black"
         android:textSize="13dp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/img_order_hinhthanhtoan"

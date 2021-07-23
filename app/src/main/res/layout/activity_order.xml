@@ -101,7 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:orientation="horizontal"
-            android:background="@color/yellow_light"
+            android:background="#33CC33"
             app:layout_constraintEnd_toEndOf="parent" />
 
     </LinearLayout>
@@ -120,14 +120,18 @@
             android:text="Mã giảm giá"
             android:textStyle="bold"
             />
-
-        <Spinner
-            android:id="@+id/cbo_order_magiamgia"
-            android:layout_width="200dp"
+        <EditText
+            android:id="@+id/txt_order_giamgia"
+            android:layout_width="100dp"
             android:layout_height="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/white"></Spinner>
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="15dp"
+            android:textColor="@color/black"
+            android:drawablePadding="10dp"
+            android:hint="  Mã giảm giá"
+            android:layout_weight="1"
+            android:background="@drawable/decorate_text_basic"/>
+        
 
 
     </LinearLayout>
