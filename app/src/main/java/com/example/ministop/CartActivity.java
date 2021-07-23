@@ -40,6 +40,7 @@ public class CartActivity extends AppCompatActivity {
     TextView  tvNull;
     CartAdapterListView cartAdapter;
     public static TextView tvThanhtien;
+    OnDeleteCart onDeleteCart;
 
     String url = "http://" + DEPRESS.ip + "/wsministop/getsanpham.php";
 
@@ -48,6 +49,7 @@ public class CartActivity extends AppCompatActivity {
         super.onStop();
 
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,17 @@ public class CartActivity extends AppCompatActivity {
         tvNull = findViewById(R.id.lbl_Cart_notificationcart);
         lvCart = findViewById(R.id.lst_Cart);
         tvThanhtien = findViewById(R.id.tv_Cart_Total);
-        cartAdapter = new CartAdapterListView(CartActivity.this, DEPRESS.carts);
+
+        onDeleteCart = new OnDeleteCart() {
+            @Override
+            public void onDelete(CART c) {
+                DEPRESS.carts.remove(c);
+                cartAdapter = new CartAdapterListView(CartActivity.this, DEPRESS.carts, onDeleteCart );
+                lvCart.setAdapter(cartAdapter);
+                
+            }
+        };
+        cartAdapter = new CartAdapterListView(CartActivity.this, DEPRESS.carts, onDeleteCart );
         lvCart.setAdapter(cartAdapter);
 
 
@@ -93,6 +105,7 @@ public class CartActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent1 = new Intent(getApplicationContext(),HomeActivity.class);
                 startActivity(intent1);
+                // :)))
 
             }
         });
@@ -114,6 +127,7 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
+
 //        btnAdd.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -127,6 +141,7 @@ public class CartActivity extends AppCompatActivity {
 
 
     }
+
 
 //    private void catchOnItemListView() {
 //        lvCart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

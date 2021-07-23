@@ -16,13 +16,15 @@ import java.util.ArrayList;
 public class CartAdapterListView extends BaseAdapter {
     Context context;
     ArrayList<CART> carts;
+    OnDeleteCart onDeleteCart;
 
     String url = "http://" + DEPRESS.ip + "/wsministop/sanpham/";
 
-    public CartAdapterListView(Context context, ArrayList<CART> carts)
+    public CartAdapterListView(Context context, ArrayList<CART> carts, OnDeleteCart onDeleteCart)
     {
         this.context = context;
         this.carts = carts;
+        this.onDeleteCart = onDeleteCart;
     }
 
     @Override
@@ -92,21 +94,28 @@ public class CartAdapterListView extends BaseAdapter {
                     {
                         ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
                     }
-                    else
+                    if ((DEPRESS.carts.size()>=0))
                     {
-                        DEPRESS.carts.remove(position);
-                        ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+//                        DEPRESS.carts.remove(carts.get(position));
+//                        synchronized(carts){
+//                        carts.notify();
+//                    }
+                        onDeleteCart.onDelete(carts.get(position));
                         ((CartActivity)(context)).xuLyThanhTien();
-                        if(DEPRESS.carts.size()<=0)
-                        {
-                            ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
-                            ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
-                            ((CartActivity)(context)).xuLyThanhTien();
-                        }
                     }
-                }
-            });
+                    else if(DEPRESS.carts.size()<=0)
+                    {
+                        ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+//                        ((CartActivity)(context)).cartAdapter.notify();
+                        ((CartActivity)(context)).xuLyThanhTien();
+                    }
 
+//                    synchronized(this){
+//                        notify();
+//                    }
+//                    ((CartActivity)(context)).cartAdapter.notify();
+                    }
+            });
 
             btn_min.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -116,22 +125,39 @@ public class CartAdapterListView extends BaseAdapter {
                     if(soluong == 1)
                     {
                         //btn_min.setVisibility(View.VISIBLE);
+
                         if(DEPRESS.carts.size()<=0)
                         {
                             ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
                         }
-                        else
+                        if ((DEPRESS.carts.size()>=0))
                         {
-                            DEPRESS.carts.remove(position);
-                            ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+
+                            onDeleteCart.onDelete(carts.get(position));
                             ((CartActivity)(context)).xuLyThanhTien();
-                            if(DEPRESS.carts.size()<=0)
-                            {
-                                ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
-                                ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
-                                ((CartActivity)(context)).xuLyThanhTien();
-                            }
                         }
+                        else if(DEPRESS.carts.size()<=0)
+                        {
+                            ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+//                        ((CartActivity)(context)).cartAdapter.notify();
+                            ((CartActivity)(context)).xuLyThanhTien();
+                        }
+//                        if(DEPRESS.carts.size()<=0)
+//                        {
+//                            ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+//                        }
+//                        else
+//                        {
+//                            DEPRESS.carts.remove(position);
+//                            ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+//                            ((CartActivity)(context)).xuLyThanhTien();
+//                            if(DEPRESS.carts.size()<=0)
+//                            {
+//                                ((CartActivity)(context)).tvNull.setVisibility(View.VISIBLE);
+//                                ((CartActivity)(context)).cartAdapter.notifyDataSetChanged();
+//                                ((CartActivity)(context)).xuLyThanhTien();
+//                            }
+//                        }
                     }
                     else
                     {

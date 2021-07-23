@@ -39,10 +39,14 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
     ArrayList<HTTHANHTOAN> hinhthuctt = new ArrayList<>();
     OrderAdapter_rclHTTT orderAdapter_rclHTTT;
 
+    ArrayList<String> sngiamgia = new ArrayList<>();
+
+
     OrderAdapter_lst OrderAdapter_lst;
     TextView lblten, lblsdt, lbldiachi, lbltiengiam, lblthanhtien, lbltongcong;
 //    String url = "http://" + DEPRESS.ip + "/wsministop/getsanpham.php";
     String urlht = "http://" + DEPRESS.ip + "/wsministop/gethtthanhtoan.php";
+    String urlgg = "http://" + DEPRESS.ip + "/wsministop/getgiamgia.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +158,37 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlht, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
+
+
+//    public void LayGiamGia() {
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//
+//        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
+//            @Override
+//            public void onResponse(JSONArray response) {
+//                for (int i = 0; i < response.length(); i++) {
+//                    try {
+//                        JSONObject jsonObject = response.getJSONObject(i);
+//                        hinhthuctt.add(new HTTHANHTOAN(jsonObject.getString("idhtthanhtoan"), jsonObject.getString("tenhinhthuc"), jsonObject.getString("mota"),jsonObject.getString("tinhtrang")));
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                orderAdapter_rclHTTT.notifyDataSetChanged();
+//            }
+//        };
+//
+//        Response.ErrorListener thatbai = new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        };
+//
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlht, thanhcong, thatbai);
+//        requestQueue.add(jsonArrayRequest);
+//    }
+
 
 
     @Override
