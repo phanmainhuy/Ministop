@@ -3,9 +3,13 @@ package com.example.ministop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -31,6 +35,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class OrderActivity extends AppCompatActivity implements OnClickListenerOrder{
+    public static final String CHANNEL_ID = "Ministop";
     Button btndathang, btngiamgia;
     NGUOIDUNG user;
     ListView lvsporder;
@@ -109,11 +114,39 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
         btndathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sendNotification();
                 DEPRESS.carts = new ArrayList<>();
-                Intent intent = new Intent(OrderActivity.this, Order_SuccessfulActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Order_SuccessfulActivity.class);
+
                 startActivity(intent);
+
             }
         });
+
+    }
+
+    private void sendNotification() {
+//        Notification notification = new Notification.Builder(OrderActivity.this).setContentTitle("Thông báo đặt hàng thành công")
+//                .setContentText("Bạn đã đặt hàng thành công, đơn hàng sẽ được vận chuyển đến bạn sớm nhất")
+//                .setSmallIcon(R.drawable.ic_notification)
+//                .setColor(getResources().getColor(R.color.blue))
+//                .build();
+//        if(notificationManager != null)
+//        {
+//            notificationManager.notify(NOTIFICATION_ID, notification);
+//        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle("Thông báo đặt hàng thành công")
+                .setContentText("Bạn đã đặt hàng thành công, đơn hàng sẽ được vận chuyển đến bạn sớm nhất")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+
+
+
+
 
     }
 
