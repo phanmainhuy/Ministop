@@ -36,6 +36,7 @@ import java.util.ArrayList;
 
 public class OrderActivity extends AppCompatActivity implements OnClickListenerOrder{
     public static final String CHANNEL_ID = "Ministop";
+    public static final int NOTIFICATION_ID = 1;
     Button btndathang, btngiamgia;
     NGUOIDUNG user;
     ListView lvsporder;
@@ -129,20 +130,23 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
 //        Notification notification = new Notification.Builder(OrderActivity.this).setContentTitle("Thông báo đặt hàng thành công")
 //                .setContentText("Bạn đã đặt hàng thành công, đơn hàng sẽ được vận chuyển đến bạn sớm nhất")
 //                .setSmallIcon(R.drawable.ic_notification)
-//                .setColor(getResources().getColor(R.color.blue))
+//                .setColor(getResources().getColor( R.color.blue))
 //                .build();
+//                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 //        if(notificationManager != null)
 //        {
 //            notificationManager.notify(NOTIFICATION_ID, notification);
 //        }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(OrderActivity.this)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("Thông báo đặt hàng thành công")
                 .setContentText("Bạn đã đặt hàng thành công, đơn hàng sẽ được vận chuyển đến bạn sớm nhất")
+                .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, builder.build());
 
 
 
