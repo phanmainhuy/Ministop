@@ -10,11 +10,7 @@ public class DEPRESS {
     public static Options OPTIONdata;
 
     //Y:192.168.22.102  //Ru:192.168.1.3
-    public static String ip = "192.168.22.102";
+    public static String ip = "192.168.1.7";
     public static int ThanhToan = 0;
-
-
-
-
 }
 

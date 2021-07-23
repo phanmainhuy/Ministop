@@ -3,14 +3,19 @@ package com.example.ministop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -32,6 +37,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class OrderActivity extends AppCompatActivity implements OnClickListenerOrder{
@@ -116,6 +122,7 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
             @Override
             public void onClick(View v) {
                 sendNotification();
+
                 DEPRESS.carts = new ArrayList<>();
                 Intent intent = new Intent(getApplicationContext(), Order_SuccessfulActivity.class);
 
@@ -127,18 +134,21 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
     }
 
     private void sendNotification() {
-//        Notification notification = new Notification.Builder(OrderActivity.this).setContentTitle("Thông báo đặt hàng thành công")
-//                .setContentText("Bạn đã đặt hàng thành công, đơn hàng sẽ được vận chuyển đến bạn sớm nhất")
-//                .setSmallIcon(R.drawable.ic_notification)
-//                .setColor(getResources().getColor( R.color.blue))
-//                .build();
-//                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//        if(notificationManager != null)
-//        {
-//            notificationManager.notify(NOTIFICATION_ID, notification);
-//        }
+        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.logo);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(OrderActivity.this)
+        Notification notification = new NotificationCompat.Builder(this, Notification_Application.CHANNEL_ID)
+                .setContentTitle("Thông báo đặt hàng thành công")
+                .setContentText("Bạn đã đặt hàng thành công, đơn hàng sẽ được vận chuyển đến bạn sớm nhất")
+                .setSmallIcon(R.drawable.ic_notification)
+                .build();
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if(notificationManager != null)
+        {
+            notificationManager.notify(NOTIFICATION_ID, notification);
+        }
+
+        /*NotificationCompat.Builder builder = new NotificationCompat.Builder(OrderActivity.this)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle("Thông báo đặt hàng thành công")
                 .setContentText("Bạn đã đặt hàng thành công, đơn hàng sẽ được vận chuyển đến bạn sớm nhất")
@@ -146,12 +156,7 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0, builder.build());
-
-
-
-
-
+        notificationManager.notify(0, builder.build());*/
     }
 
 
@@ -226,7 +231,12 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
 //        requestQueue.add(jsonArrayRequest);
 //    }
 
-
+    //Tạo format tiền VND
+    public static String formatNumberCurrency(String gia)
+    {
+        DecimalFormat format = new DecimalFormat("#,###");
+        return format.format(Double.parseDouble(gia));
+    }
 
     @Override
     public void ItemClickHinhthuc(HTTHANHTOAN htthanhtoan) {
