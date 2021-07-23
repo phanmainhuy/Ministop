@@ -83,7 +83,8 @@ public class CartActivity extends AppCompatActivity {
                 DEPRESS.carts.remove(c);
                 cartAdapter = new CartAdapterListView(CartActivity.this, DEPRESS.carts, onDeleteCart );
                 lvCart.setAdapter(cartAdapter);
-                
+                checkData();
+
             }
         };
         cartAdapter = new CartAdapterListView(CartActivity.this, DEPRESS.carts, onDeleteCart );
