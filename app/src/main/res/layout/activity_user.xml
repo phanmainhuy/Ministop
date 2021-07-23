@@ -185,18 +185,31 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/txt_User_GioiTinh"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:ems="10"
-                            android:hint="Giới tính"
-                            android:inputType="text"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/hint_txt"
-                            android:textSize="16dp" />
+                            <RadioButton
+                                android:id="@+id/rdb_User_Nam"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="16dp"
+                                android:text="Nam"
+                                android:textColor="@color/black" />
+
+                            <RadioButton
+                                android:id="@+id/rdb_User_Nu"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:textSize="16dp"
+                                android:text="Nữ"
+                                android:textColor="@color/black" />
+                        </RadioGroup>
+
+
                     </RadioGroup>
                 </LinearLayout>
 

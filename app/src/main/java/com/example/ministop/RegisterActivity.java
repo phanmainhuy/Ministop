@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     RequestQueue requestQueue;
     ArrayList<NGUOIDUNG> user = new ArrayList<>();
     ArrayList<NGUOIDUNG> dangky = new ArrayList<>();
-    String url = "http://" + DEPRESS.ip +"/wsministop/register.php";
+    String url = "http://" + DEPRESS.ip + "/wsministop/register.php";
     String urlNguoiDung = "http://" + DEPRESS.ip + "/wsministop/getnguoidung.php";
 
     @Override
@@ -73,42 +73,42 @@ public class RegisterActivity extends AppCompatActivity {
 
         LaydulieuNguoiDung();
 
+//        kiemTraDuLieuTrung();
+
 
         btnSaveRegist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(txtphone.getText().toString().equals("") || txtpassword.getText().toString().equals("") || txtrepass.getText().toString().equals("") || txtemail.getText().toString().equals("") || txtname.getText().toString().equals("") || txtaddress.getText().toString().equals(""))
-                {
+
+                if (txtphone.getText().toString().equals("") || txtpassword.getText().toString().equals("") || txtrepass.getText().toString().equals("") || txtemail.getText().toString().equals("") || txtname.getText().toString().equals("") || txtaddress.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
                     return;
                 }
-                if(!txtrepass.getText().toString().equals(txtpassword.getText().toString()))
+//                for (NGUOIDUNG i : user) {
+//                    if(txtphone.getText().toString().equals(i.sdt))
+//                    {
+//                        Toast.makeText(getApplicationContext(), "Số điện thoại đã được đăng ký", Toast.LENGTH_LONG).show();
+//                        txtphone.setText("");
+//                        break;
+//                    }
+//                }
+                if(kiemTraDuLieuTrung(txtphone.getText().toString()))
                 {
+                    Toast.makeText(getApplicationContext(), "Số điện thoại đã được đăng ký", Toast.LENGTH_LONG).show();
+                        txtphone.setText("");
+                        return;
+                }
+                if (!txtrepass.getText().toString().equals(txtpassword.getText().toString())) {
                     Toast.makeText(getApplicationContext(), "Mật khẩu nhập lại không khớp", Toast.LENGTH_LONG).show();
                     return;
                 }
-                else
-                {
-                    for (NGUOIDUNG i : user) {
-                        if(txtphone.getText().toString().equals(i.sdt))
-                        {
-                            Toast.makeText(getApplicationContext(), "Số điện thoại đã được đăng ký", Toast.LENGTH_LONG).show();
-                            txtphone.setText("");
-                            return;
-                        }
-                        else
-                        {
-                            volleyPost();
-                            Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
-                            Intent intent1 = new Intent(RegisterActivity.this, LoginActivity.class);
-                            startActivity(intent1);
-                        }
+                else {
 
-
-
-                    }
-
+                    volleyPost();
+                    Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
+                    Intent intent1 = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(intent1);
                 }
 
 
@@ -129,11 +129,20 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
-
     }
 
+    private boolean kiemTraDuLieuTrung(String a) {
+        for (NGUOIDUNG i : user) {
 
-
+            if (a.equals(i.sdt))
+            {
+                return true; //co trung
+            }
+            else
+                return  false; //khong trung
+        }
+        return false;
+    }
 
 
 //    public void HandleRegister(View view)
@@ -159,7 +168,7 @@ public class RegisterActivity extends AppCompatActivity {
 //
 //    }
 
-    public void volleyPost(){
+    public void volleyPost() {
 
         RequestQueue requestQueue = Volley.newRequestQueue(RegisterActivity.this);
 
@@ -232,7 +241,6 @@ public class RegisterActivity extends AppCompatActivity {
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlNguoiDung, thanhcong, thatbai);
         requestQueue.add(jsonArrayRequest);
     }
-
 
 
 }

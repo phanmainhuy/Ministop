@@ -25,6 +25,7 @@ public class UserActivity extends AppCompatActivity {
     NGUOIDUNG user;
     ImageView avatarUser;
     TextView tvNameAva, txtHoTen, txtSDT, txtEmail, txtNgaySinh , txtDiaChi, txtGioiTinh;
+    RadioButton rdoNam, rdoNu;
 
 
 
@@ -56,7 +57,10 @@ public class UserActivity extends AppCompatActivity {
         txtHoTen = findViewById(R.id.txt_User_Hoten);
         txtSDT = findViewById(R.id.txt_User_Phone);
         txtEmail = findViewById(R.id.txt_User_Email);
-        txtGioiTinh = findViewById(R.id.txt_User_GioiTinh);
+//        txtGioiTinh = findViewById(R.id.txt_User_GioiTinh);
+        rdoNam = findViewById(R.id.rdb_User_Nam);
+        rdoNu = findViewById(R.id.rdb_User_Nu);
+
         txtNgaySinh = findViewById(R.id.txt_User_Birthday);
         txtDiaChi = findViewById(R.id.txt_User_Address);
 
@@ -75,7 +79,17 @@ public class UserActivity extends AppCompatActivity {
             txtEmail.setText(user.getEmail());
             txtNgaySinh.setText(user.getNgaysinh());
             txtDiaChi.setText(user.getDiachi());
-            txtGioiTinh.setText(user.getGioitinh());
+//            txtGioiTinh.setText(user.getGioitinh());
+            if(user.getGioitinh().equals("Nam"))
+            {
+                rdoNam.setChecked(true);
+            }
+            else
+                rdoNu.setChecked(true);
+
+
+
+
 
         }
 
