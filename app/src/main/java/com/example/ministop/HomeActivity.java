@@ -230,12 +230,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             drawerLayout.closeDrawer(GravityCompat.START);
         }
-        if (mSelectedId == R.id.mnu_cart) {
-            intent = new Intent(HomeActivity.this, CartActivity.class);
-            startActivity(intent);
-
-            drawerLayout.closeDrawer(GravityCompat.START);
-        }
+//        if (mSelectedId == R.id.mnu_cart) {
+//            intent = new Intent(HomeActivity.this, CartActivity.class);
+//            startActivity(intent);
+//
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        }
         if (mSelectedId == R.id.mnu_address) {
             intent = new Intent(HomeActivity.this, LocationActivity.class);
             startActivity(intent);

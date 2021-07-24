@@ -46,6 +46,7 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
     Button btndathang, btngiamgia;
     NGUOIDUNG user;
     ListView lvsporder;
+    
 
     RecyclerView rclhinhthuctt;
     ArrayList<HTTHANHTOAN> hinhthuctt = new ArrayList<>();

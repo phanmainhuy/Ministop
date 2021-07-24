@@ -252,7 +252,6 @@ public class CartActivity extends AppCompatActivity {
                                 tvThanhtien.setText(Tongtien + "  VND");
                                 DEPRESS.ThanhToan = Tongtien;
                                 // hai vong for thi nho break
-                                // ok chua
                                 break;
 
                             }
