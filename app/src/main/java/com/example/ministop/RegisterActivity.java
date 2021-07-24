@@ -180,14 +180,14 @@ public class RegisterActivity extends AppCompatActivity {
             String email = txtemail.getText().toString();
             String hoten = txtname.getText().toString();
             String diachi = txtaddress.getText().toString();
-//            String ngaysinh = txtbirthday.getText().toString();
+            String ngaysinh = txtbirthday.getText().toString();
             String gioitinh = txtgender.getText().toString();
 //            postData.put("IDNguoiDung", "");
             postData.put("SDT", sdt);
             postData.put("HoTen", hoten);
             postData.put("MatKhau", matkhau);
             postData.put("Email", email);
-//            postData.put("NgaySinh", ngaysinh);
+            postData.put("NgaySinh", ngaysinh);
             postData.put("GioiTinh", gioitinh);
             postData.put("DiaChi", diachi);
 //            postData.put("HinhAnh", "");

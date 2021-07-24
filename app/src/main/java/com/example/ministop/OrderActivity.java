@@ -31,6 +31,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
@@ -46,7 +47,7 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
     Button btndathang, btngiamgia;
     NGUOIDUNG user;
     ListView lvsporder;
-    
+
 
     RecyclerView rclhinhthuctt;
     ArrayList<HTTHANHTOAN> hinhthuctt = new ArrayList<>();
@@ -60,6 +61,9 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
 //    String url = "http://" + DEPRESS.ip + "/wsministop/getsanpham.php";
     String urlht = "http://" + DEPRESS.ip + "/wsministop/gethtthanhtoan.php";
     String urlgg = "http://" + DEPRESS.ip + "/wsministop/getgiamgia.php";
+    String urlhd = "http://" + DEPRESS.ip + "/wsministop/hoadon.php";
+    String urlcthd = "http://" + DEPRESS.ip + "/wsministop/cthoadon.php";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,8 +126,8 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
         btndathang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                volleyPostHD();
                 sendNotification();
-
                 DEPRESS.carts = new ArrayList<>();
                 Intent intent = new Intent(getApplicationContext(), Order_SuccessfulActivity.class);
 
@@ -202,35 +206,72 @@ public class OrderActivity extends AppCompatActivity implements OnClickListenerO
         requestQueue.add(jsonArrayRequest);
     }
 
+    public void volleyPostHD() {
 
-//    public void LayGiamGia() {
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//
-//        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
-//            @Override
-//            public void onResponse(JSONArray response) {
-//                for (int i = 0; i < response.length(); i++) {
-//                    try {
-//                        JSONObject jsonObject = response.getJSONObject(i);
-//                        hinhthuctt.add(new HTTHANHTOAN(jsonObject.getString("idhtthanhtoan"), jsonObject.getString("tenhinhthuc"), jsonObject.getString("mota"),jsonObject.getString("tinhtrang")));
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//                orderAdapter_rclHTTT.notifyDataSetChanged();
-//            }
-//        };
-//
-//        Response.ErrorListener thatbai = new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        };
-//
-//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlht, thanhcong, thatbai);
-//        requestQueue.add(jsonArrayRequest);
-//    }
+        RequestQueue requestQueue = Volley.newRequestQueue(OrderActivity.this);
+
+        JSONObject postData = new JSONObject();
+        try {
+
+
+            String idnguoidung = DEPRESS.USER.getId();
+            String tongtien = lblthanhtien.getText().toString();
+            String trangthai = "Đã đặt hàng";
+
+            postData.put("IDNguoiDung", idnguoidung);
+            postData.put("TongTien", tongtien);
+            postData.put("TrangThai", trangthai);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, urlhd, postData, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                System.out.println(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+
+
+    public void LayGiamGia() {
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+
+        Response.Listener<JSONArray> thanhcong = new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        hinhthuctt.add(new HTTHANHTOAN(jsonObject.getString("idhtthanhtoan"), jsonObject.getString("tenhinhthuc"), jsonObject.getString("mota"),jsonObject.getString("tinhtrang")));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                orderAdapter_rclHTTT.notifyDataSetChanged();
+            }
+        };
+
+        Response.ErrorListener thatbai = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        };
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, urlht, thanhcong, thatbai);
+        requestQueue.add(jsonArrayRequest);
+    }
 
     //Tạo format tiền VND
     public static String formatNumberCurrency(String gia)

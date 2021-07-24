@@ -116,7 +116,7 @@ public class CartActivity extends AppCompatActivity {
                 if(tvThanhtien.getText().toString().equals(0+"  VND"))
                 {
                     btnPay.setVisibility(View.VISIBLE);
-                    Toast.makeText(getApplicationContext(), "Giỏ hàng bạn chưa có gì để thanh toán", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Giỏ hàng của bạn chưa có gì để thanh toán", Toast.LENGTH_SHORT).show();
                 }
 
                 else
